@@ -4,9 +4,6 @@ import Cookies from 'js-cookie';
 import { DataLayer } from '@/context/UserDataProvider';
 import AuthenticatedLayer from './AuthenticatedLayer';
 import RoleLayer from './RoleLayer';
-import PoliceDashboard from '../police/dashboard';
-import AdminDashboard from '../admin/dashboard';
-import UserDashboard from '../user/dashboard';
 
 const GuestLayer = ({ children }) => {
   const { isAuthenticated, role } = useContext(DataLayer);

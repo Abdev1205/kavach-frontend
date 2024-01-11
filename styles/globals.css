@@ -245,3 +245,22 @@ body:focus {
     stroke-dashoffset: -240.34889px;
   }
 }
+
+
+/* left panel code */
+.panel-shadow {
+  box-shadow: 15px 0px 61.2px 2px #070D22;
+
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
