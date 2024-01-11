@@ -2,26 +2,246 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  -webkit-tap-highlight-color: transparent;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+body:focus {
+  outline: none !important;
+}
+
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.no-select:focus {
+  outline: none !important;
+}
+
+/* night mode switch code  */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 34px;
+  scale: .7;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #73C0FC;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  left: 2px;
+  bottom: 2px;
+  z-index: 2;
+  background-color: #e8e8e8;
+  transition: .4s;
+}
+
+.sun svg {
+  position: absolute;
+  top: 6px;
+  left: 36px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.moon svg {
+  fill: #73C0FC;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+/* .switch:hover */
+.sun svg {
+  animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* .switch:hover */
+.moon svg {
+  animation: tilt 5s linear infinite;
+}
+
+@keyframes tilt {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.input:checked+.slider {
+  background-color: #183153;
+}
+
+.input:focus+.slider {
+  box-shadow: 0 0 1px #183153;
+}
+
+.input:checked+.slider:before {
+  transform: translateX(30px);
+}
+
+/* font code  */
+@font-face {
+  font-family: nunito;
+  src: url(../public/Fonts/nunito_sans/NunitoSans-Regular.ttf);
+  font-weight: 400;
+}
+
+/* @font-face {
+  font-family: dm_sans;
+  src: url(../public/Fonts/dm_sans/DMSans-Regular.ttf);
+  font-weight: 400;
+} */
+
+@font-face {
+  font-family: lora;
+  src: url(../public/Fonts/lora/Lora-Regular.ttf);
+  font-weight: 400;
+}
+
+
+@font-face {
+  font-family: nunito;
+  src: url(../public/Fonts/nunito_sans/NunitoSans-SemiBold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: roboto;
+  src: url(../public/Fonts/roboto/Roboto-Medium.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: dm_sans;
+  src: url(../public/Fonts/dm_sans/DMSans-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: nunito;
+  src: url(../public/Fonts/nunito_sans/NunitoSans-Bold.ttf);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: lily;
+  src: url(../public/Fonts/lilly/LilyScriptOne-Regular.ttf);
+  font-weight: 400;
+}
+
+/* use type code  */
+.user-not-selected {
+  box-shadow: 0px 0px 58.4px 0px rgba(0, 0, 0, 0.13);
+}
+
+.user-selected {
+  background: #101935;
+
+  box-shadow: 0px 0px 65px 2px #6c71ff51;
+}
+
+.user-elipse-gradient {
+  background-color: rgba(108, 114, 255, 0.39);
+  filter: drop-shadow(0px 0px 49px rgba(108, 114, 255, 0.32));
+}
+
+
+/* loader code  */
+#outline {
+  stroke-dasharray: 2.42777px, 242.77666px;
+  stroke-dashoffset: 0;
+  -webkit-animation: anim 1.6s linear infinite;
+  animation: anim 1.6s linear infinite;
+}
+
+@-webkit-keyframes anim {
+  12.5% {
+    stroke-dasharray: 33.98873px, 242.77666px;
+    stroke-dashoffset: -26.70543px;
+  }
+
+  43.75% {
+    stroke-dasharray: 84.97183px, 242.77666px;
+    stroke-dashoffset: -84.97183px;
+  }
+
+  100% {
+    stroke-dasharray: 2.42777px, 242.77666px;
+    stroke-dashoffset: -240.34889px;
+  }
+}
+
+@keyframes anim {
+  12.5% {
+    stroke-dasharray: 33.98873px, 242.77666px;
+    stroke-dashoffset: -26.70543px;
+  }
+
+  43.75% {
+    stroke-dasharray: 84.97183px, 242.77666px;
+    stroke-dashoffset: -84.97183px;
+  }
+
+  100% {
+    stroke-dasharray: 2.42777px, 242.77666px;
+    stroke-dashoffset: -240.34889px;
+  }
 }
