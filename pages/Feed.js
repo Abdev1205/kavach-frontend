@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { Data } from "../Context/Context.js";
+import toast from "react-toastify";
+import { UserDataProvider } from "../context/UserDataProvider.js";
 import { PiSlidersLight } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
@@ -14,7 +14,7 @@ import ImageUploader from "@/components/ImageUploader.js";
 import axios from "axios";
 import { server } from "@/pages/index.js";
 const Feed = () => {
-  const { refresh, setRefresh, loading, setLoading } = useContext(Data);
+  const { refresh, setRefresh, loading, setLoading } = useContext(UserDataProvider);
   const [post, setPost] = useState(false);
   const [feed, setFeed] = useState([]);
 

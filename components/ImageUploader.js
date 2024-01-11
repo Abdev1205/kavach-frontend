@@ -1,15 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import toast from "react-hot-toast";
+import toast from "react-toastify";
 import { useRouter } from "next/router";
 import {server} from "../pages/index.js";
-import { Data } from "../Context/Context.js";
+import { UserDataProvider } from "../context/UserDataProvider.js";
 import axios from "axios";
 
 const ImageUploader = () => {
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(null);
   const [caption, setCaption] = useState("");
-  const { setLoading, setRefresh, refresh } = useContext(Data);
+  const { setLoading, setRefresh, refresh } = useContext(UserDataProvider);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -28,12 +28,12 @@ const ImageUploader = () => {
 
       console.log("After Call");
       setCaption("");
-      toast.success(data.message);
+      toast(data.message);
       setRefresh((prev) => !prev);
       setLoading(false);
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error.response.data.message);
+      toast(error.response.data.message);
       setLoading(false);
     }
   };

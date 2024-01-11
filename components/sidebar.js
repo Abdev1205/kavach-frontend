@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react'
-import toast from 'react-hot-toast';
-import { Data } from '../Context/Context.js';
+import toast from "react-toastify";
+import { UserDataProvider } from "../context/UserDataProvider.js";
 import { useRouter } from 'next/router.js';
 import PoliceLogo from "@/public/Rajasthan_Police_Logo.png";
 import Image from "next/image";

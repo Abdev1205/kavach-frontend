@@ -9,17 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@next/font": "^14.0.4",
-    "@reduxjs/toolkit": "^2.0.1",
-    "axios": "^1.6.5",
-    "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-hot-toast": "^2.4.1",
-    "react-icons": "^4.12.0",
-    "react-redux": "^9.0.4"
-=======
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.5",
     "js-cookie": "^3.0.5",
@@ -31,7 +21,6 @@
     "react-icons": "^4.12.0",
     "react-redux": "^9.0.4",
     "react-toastify": "^9.1.3"
->>>>>>> 57488ace3688ee67d5d2bed7e20bf1d00f8884a9
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import "@/styles/globals.css";
-import Context from "@/Context/Context";
-import { Toaster } from "react-hot-toast";
-export default function App({ Component, pageProps }) {
-  return <>
-    <Context>
-      <Component {...pageProps} />
-      <Toaster />
-    </Context>
-  </>;
-=======
 import '@/styles/globals.css'
 import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
@@ -64,5 +52,4 @@ export default function App({ Component, pageProps: { session, ...pageProps }, }
       />
     </UserDataProvider>
   )
->>>>>>> 57488ace3688ee67d5d2bed7e20bf1d00f8884a9
 }

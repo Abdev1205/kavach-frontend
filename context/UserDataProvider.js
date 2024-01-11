@@ -19,6 +19,7 @@ const UserDataProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   const [loginInit, setLoginInit] = useState(false)
   const [roleInit, setRoleInit] = useState(false)
   const [role, setRole] = useState("");

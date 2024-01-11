@@ -1,13 +1,13 @@
 import Sidebar from '@/components/sidebar'
 import React, {useContext, useEffect} from 'react'
 import Feed from './Feed'
-import toast from 'react-hot-toast';
-import { Data } from '../Context/Context.js';
+import toast from "react-toastify";
+import { UserDataProvider } from "../context/UserDataProvider.js";
 import { useRouter } from 'next/router.js';
   
 const UserDash = () => {
   const router = useRouter();
-  const { isAuthenticated } = useContext(Data);
+  const { isAuthenticated } = useContext(UserDataProvider);
   useEffect(() => {
     if (!isAuthenticated) {
       router.push('/login');

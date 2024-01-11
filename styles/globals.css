@@ -9,7 +9,7 @@ bg-gray-700 hover:bg-slate-500 dark:bg-gray-800
 text-slate-400 hover:text-white
   hover:rounded-xl rounded-3xl
   transition-all duration-150 ease-linear
-  cursor-pointer shadow-lg ;
+  cursor-pointer shadow-lg;
 }
 
 .sidebar-tooltip {
@@ -25,29 +25,6 @@ text-slate-400 hover:text-white
   mx-2;
 }
 
-
-::-webkit-scrollbar {
-  width: 10px;
-  display: none;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #101935;
-  border-radius: 20px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #1e3067;
-}
-
-* {
-  margin: 0rem 0rem 0rem 0rem;
-  padding: 0rem 0rem 0rem 0rem;
-  box-sizing: border-box;
-  font-family: "nunito";
-}
 body {
   -webkit-tap-highlight-color: transparent;
 }
@@ -77,7 +54,7 @@ body:focus {
   display: inline-block;
   width: 64px;
   height: 34px;
-  scale: .7;
+  scale: 0.7;
 }
 
 .switch input {
@@ -93,8 +70,8 @@ body:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #73C0FC;
-  transition: .4s;
+  background-color: #73c0fc;
+  transition: 0.4s;
   border-radius: 30px;
 }
 
@@ -108,7 +85,7 @@ body:focus {
   bottom: 2px;
   z-index: 2;
   background-color: #e8e8e8;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .sun svg {
@@ -121,7 +98,7 @@ body:focus {
 }
 
 .moon svg {
-  fill: #73C0FC;
+  fill: #73c0fc;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -136,7 +113,6 @@ body:focus {
 }
 
 @keyframes rotate {
-
   0% {
     transform: rotate(0);
   }
@@ -152,7 +128,6 @@ body:focus {
 }
 
 @keyframes tilt {
-
   0% {
     transform: rotate(0deg);
   }
@@ -170,15 +145,15 @@ body:focus {
   }
 }
 
-.input:checked+.slider {
+.input:checked + .slider {
   background-color: #183153;
 }
 
-.input:focus+.slider {
+.input:focus + .slider {
   box-shadow: 0 0 1px #183153;
 }
 
-.input:checked+.slider:before {
+.input:checked + .slider:before {
   transform: translateX(30px);
 }
 
@@ -200,7 +175,6 @@ body:focus {
   src: url(../public/Fonts/lora/Lora-Regular.ttf);
   font-weight: 400;
 }
-
 
 @font-face {
   font-family: nunito;
@@ -247,7 +221,6 @@ body:focus {
   background-color: rgba(108, 114, 255, 0.39);
   filter: drop-shadow(0px 0px 49px rgba(108, 114, 255, 0.32));
 }
-
 
 /* loader code  */
 #outline {

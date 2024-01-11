@@ -24,40 +24,10 @@ module.exports = {
         fontSec : "#899BD3",
         btn : "#6C72FF",
       },
-      boxShadow: {
-        sidebar: "0px 2px 10px rgba(0, 0, 0, 0.1);",
-        dropdownPopup: "0px 4px 26px rgba(0, 0, 0, 0.125)",
-        formCard:
-          "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
-      },
-      fontFamily: {
-        nunito: ["nunito"],
-        roboto: ["Roboto"]
-      },
-      keyframes: {
-        arrowDown: {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(90deg)" },
-        },
-      },
-      animation: {
-        arrowDown: "arrowDown .2s ease-in-out forwards",
-      },
-      translate: {
-        extra: '200%',
-      },
-      screens: {
-        'xsm_desktop': '1000px',
-        'sm_desktop': '1310px',
-        'md_tablet': '1100px',
-        'lg_tablet': '1200px',
-        'xl_tablet': '1145px',
-        'sm_tablet': '710px',
-        'xl_phone': '855px',
-        'lg_phone': '500px',
-        'xsm_tablet': '534px',
-        'sm_skill': '463px',
-        'md_phone': '410px',
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
         nunito: ["nunito"],
