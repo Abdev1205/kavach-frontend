@@ -2,110 +2,113 @@ import * as React from "react";
 
 function policeDash(props) {
   return (
-    <div className="bg-slate-900 pr-10 max-md:pr-5">
+    <div className="bg-slate-900 pr-10 h-1/2 max-w-screen max-md:pr-5">
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
         <div className="flex flex-col items-stretch w-[23%] max-md:w-full max-md:ml-0">
           <div className="border-r-[color:var(--primary-border,#1F2A4A)] shadow-2xl bg-slate-900 flex grow flex-col items-stretch w-full py-7 border-r border-solid max-md:mt-9">
             <div className="flex flex-col items-stretch px-7 max-md:px-5">
-              <div className="flex items-stretch justify-between gap-2.5">
-                <img
-                  loading="lazy"
-                  srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-square object-contain object-center w-11 overflow-hidden shrink-0 max-w-full"
-                />
-
-                <div>
-                    
-                </div>
-                <div className="text-indigo-300 text-2xl font-semibold my-auto">
-                  Police Dashboard
-                </div>
-              </div>
-              <div className="border bg-slate-900 flex items-stretch justify-between gap-4 mt-9 px-3.5 py-3 rounded-md border-solid border-gray-800 max-md:pr-5">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/201bb7cfe4b4c95c67242de3491279914a42ff25b21ed75f678d6cc629e28141?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-square object-contain object-center w-5 overflow-hidden shrink-0 max-w-full"
-                />
-                <div className="text-slate-400 text-base grow whitespace-nowrap mt-1 self-start">
-                  Search things ...
-                </div>
-              </div>
-            </div>
-            <div className="bg-blue-950 shrink-0 h-0.5 mt-10" />
-            <div className="flex flex-col mt-10 px-7 max-md:px-5">
-              <div className="border-l-[color:var(--primary-btn,#6C72FF)] bg-blue-950 self-stretch flex items-stretch justify-between gap-3 px-5 py-2.5 rounded-md border-l-4 border-solid max-md:px-5">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/0b861a53933590f9e648ed6a3578639705c570dfa7093d053e8da4cdae9d00bc?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-                />
-                <div className="text-gray-100 text-lg self-center grow whitespace-nowrap my-auto">
-                  Dashboard
-                </div>
-              </div>
-              <div className="self-center flex w-[233px] max-w-full justify-between gap-5 mt-7 items-start">
-                <div className="flex gap-4 items-start">
+              <div className="flex flex-col items-stretch justify-between gap-2.5">
+                <div className="flex flex-row">
                   <img
                     loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/d6646efc21cba1618e45e63d8455655d5358cccea26152f92a6e83ebaac5527f?apiKey=e16cb3c994984815b737f967d633609a&"
+                    srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/609b4a02a5c4069a4406097a7ec2d657072b707073d77fa5131e43dcf94030d7?apiKey=e16cb3c994984815b737f967d633609a&"
+                    className="aspect-square object-contain object-center w-11 overflow-hidden shrink-0 max-w-full mr-6"
+                  />
+
+                  <div></div>
+                  <div className="flex flex-row DASHBOARD">
+                    <div className="text-indigo-300 text-2xl font-semibold my-auto">
+                      Police Dashboard
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border bg-slate-900 flex items-stretch justify-between gap-4 mt-9 px-3.5 py-3 rounded-md border-solid border-gray-800 max-md:pr-5">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/201bb7cfe4b4c95c67242de3491279914a42ff25b21ed75f678d6cc629e28141?apiKey=e16cb3c994984815b737f967d633609a&"
                     className="aspect-square object-contain object-center w-5 overflow-hidden shrink-0 max-w-full"
                   />
-                  <div className="text-indigo-300 text-lg mt-1.5">
-                    FIR reports
+                  <div className="text-slate-400 text-base grow whitespace-nowrap mt-1 self-start">
+                    Search things ...
                   </div>
                 </div>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/75cee703bd297571b310a3089b3841978c702a6199d57b7c7f7866d63a3a0bdb?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-square object-contain object-center w-[18px] overflow-hidden shrink-0 max-w-full mt-1"
-                />
               </div>
-              <div className="flex items-stretch gap-3 ml-7 mt-7 self-start max-md:ml-2.5">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d2824509e7a5df877e310d017a7baaa1943f04c7d067776da9c2162b121766a4?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-[1.08] object-contain object-center w-[26px] overflow-hidden shrink-0 max-w-full"
-                />
-                <div className="text-indigo-300 text-lg self-center grow whitespace-nowrap my-auto">
-                  Feedback
-                </div>
-              </div>
-              <div className="self-center flex w-[234px] max-w-full items-stretch justify-between gap-5 mt-7">
-                <div className="flex items-stretch justify-between gap-3">
+              <div className="bg-blue-950 shrink-0 h-0.5 mt-10" />
+              <div className="flex flex-col mt-10 px-7 max-md:px-5">
+                <div className="border-l-[color:var(--primary-btn,#6C72FF)] bg-blue-950 self-stretch flex items-stretch justify-between gap-3 px-5 py-2.5 rounded-md border-l-4 border-solid max-md:px-5">
                   <img
                     loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/378a6ebf6b6e73749e4c8c09c68226bced3395de316d17ba485b74cebd31f0ac?apiKey=e16cb3c994984815b737f967d633609a&"
-                    className="aspect-square object-contain object-center w-[26px] overflow-hidden shrink-0 max-w-full"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/0b861a53933590f9e648ed6a3578639705c570dfa7093d053e8da4cdae9d00bc?apiKey=e16cb3c994984815b737f967d633609a&"
+                    className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
                   />
-                  <div className="text-indigo-300 text-lg self-center grow whitespace-nowrap my-auto">
-                    Social Media
+                  <div className="text-gray-100 text-lg self-center grow whitespace-nowrap my-auto">
+                    Dashboard
                   </div>
                 </div>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/75cee703bd297571b310a3089b3841978c702a6199d57b7c7f7866d63a3a0bdb?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-square object-contain object-center w-[18px] overflow-hidden self-center shrink-0 max-w-full my-auto"
-                />
-              </div>
-              <div className="flex items-stretch gap-4 ml-6 mt-7 self-start max-md:ml-2.5">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/40b248846540ccf9367672a47b11d55a1cb2f99e63160f0eb9df5d0203f3bb3d?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-                />
-                <div className="text-indigo-300 text-lg self-center my-auto">
-                  Our Teams
+                <div className="self-center flex w-[233px] max-w-full justify-between gap-5 mt-7 items-start">
+                  <div className="flex gap-4 items-start">
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/d6646efc21cba1618e45e63d8455655d5358cccea26152f92a6e83ebaac5527f?apiKey=e16cb3c994984815b737f967d633609a&"
+                      className="aspect-square object-contain object-center w-5 overflow-hidden shrink-0 max-w-full"
+                    />
+                    <div className="text-indigo-300 text-lg mt-1.5">
+                      FIR reports
+                    </div>
+                  </div>
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/75cee703bd297571b310a3089b3841978c702a6199d57b7c7f7866d63a3a0bdb?apiKey=e16cb3c994984815b737f967d633609a&"
+                    className="aspect-square object-contain object-center w-[18px] overflow-hidden shrink-0 max-w-full mt-1"
+                  />
                 </div>
-              </div>
-              <div className="self-center flex items-stretch gap-3.5 mt-7">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/24b7e1977305fa052e2e51c56c5281e83c95317d1e70bf7d8da669aee80eaed9?apiKey=e16cb3c994984815b737f967d633609a&"
-                  className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-                />
-                <div className="text-indigo-300 text-lg self-center grow whitespace-nowrap my-auto">
-                  Contact Admin
+                <div className="flex items-stretch gap-3 ml-7 mt-7 self-start max-md:ml-2.5">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/d2824509e7a5df877e310d017a7baaa1943f04c7d067776da9c2162b121766a4?apiKey=e16cb3c994984815b737f967d633609a&"
+                    className="aspect-[1.08] object-contain object-center w-[26px] overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div className="text-indigo-300 text-lg self-center grow whitespace-nowrap my-auto">
+                    Feedback
+                  </div>
+                </div>
+                <div className="self-center flex w-[234px] max-w-full items-stretch justify-between gap-5 mt-7">
+                  <div className="flex items-stretch justify-between gap-3">
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/378a6ebf6b6e73749e4c8c09c68226bced3395de316d17ba485b74cebd31f0ac?apiKey=e16cb3c994984815b737f967d633609a&"
+                      className="aspect-square object-contain object-center w-[26px] overflow-hidden shrink-0 max-w-full"
+                    />
+                    <div className="text-indigo-300 text-lg self-center grow whitespace-nowrap my-auto">
+                      Social Media
+                    </div>
+                  </div>
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/75cee703bd297571b310a3089b3841978c702a6199d57b7c7f7866d63a3a0bdb?apiKey=e16cb3c994984815b737f967d633609a&"
+                    className="aspect-square object-contain object-center w-[18px] overflow-hidden self-center shrink-0 max-w-full my-auto"
+                  />
+                </div>
+                <div className="flex items-stretch gap-4 ml-6 mt-7 self-start max-md:ml-2.5">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/40b248846540ccf9367672a47b11d55a1cb2f99e63160f0eb9df5d0203f3bb3d?apiKey=e16cb3c994984815b737f967d633609a&"
+                    className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div className="text-indigo-300 text-lg self-center my-auto">
+                    Our Teams
+                  </div>
+                </div>
+                <div className="self-center flex items-stretch gap-3.5 mt-7">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/24b7e1977305fa052e2e51c56c5281e83c95317d1e70bf7d8da669aee80eaed9?apiKey=e16cb3c994984815b737f967d633609a&"
+                    className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div className="text-indigo-300 text-lg self-center grow whitespace-nowrap my-auto">
+                    Contact Admin
+                  </div>
                 </div>
               </div>
             </div>
