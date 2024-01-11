@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -57,6 +58,13 @@ module.exports = {
         'xsm_tablet': '534px',
         'sm_skill': '463px',
         'md_phone': '410px',
+      },
+      fontFamily: {
+        nunito: ["nunito"],
+        dm_sans: ["dm_sans"],
+        lily: ["lily"],
+        lora: ["lora"],
+        roboto: ['roboto']
       },
     },
   },
