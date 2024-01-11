@@ -1,0 +1,5 @@
+GOOGLE_CLIENT_ID=1078112166710-6elno2slm7sbktmt6854akch0tl6c3iq.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+NEXTAUTH_SECRET="abhay"
+NEXTAUTH_URL="http://localhost:3000"
+BASEURL="http://localhost:4000"
