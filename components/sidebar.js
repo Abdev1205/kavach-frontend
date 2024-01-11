@@ -1,9 +1,10 @@
 import React, {useContext, useEffect} from 'react'
 import toast from "react-toastify";
-import { UserDataProvider } from "../context/UserDataProvider.js";
+import { DataLayer } from "../context/UserDataProvider.js";
 import { useRouter } from 'next/router.js';
 import PoliceLogo from "@/public/Rajasthan_Police_Logo.png";
 import Image from "next/image";
+import { ApiUrl } from "@/utils/BaseUrl.js";
 import { IoSearch, IoCall, IoPersonSharp } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { GoHomeFill } from "react-icons/go";
@@ -12,12 +13,12 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 
 const Sidebar = ({User="User"}) => {
-  const {isAuthenticated, setIsAuthenticated, loading, setLoading} = useContext(Data);
+  const {isAuthenticated, setIsAuthenticated, loading, setLoading} = useContext(DataLayer);
   const logoutHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const {data} = await axios.get(`${server}/users/logout`, {
+      const {data} = await axios.get(`${ApiUrl}/users/logout`, {
         withCredentials: true,
       })
       setIsAuthenticated(false);

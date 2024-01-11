@@ -24,7 +24,18 @@ text-slate-400 hover:text-white
   border border-gray-200 dark:border-gray-800 rounded-full
   mx-2;
 }
-
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
 body {
   -webkit-tap-highlight-color: transparent;
 }
@@ -41,10 +52,6 @@ body:focus {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.no-select:focus {
-  outline: none !important;
 }
 
 /* night mode switch code  */

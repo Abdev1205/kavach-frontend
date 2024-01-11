@@ -1,46 +1,52 @@
-import React, { useState, useContext, useEffect } from "react";
-import toast from "react-toastify";
+import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import {server} from "../pages/index.js";
-import { UserDataProvider } from "../context/UserDataProvider.js";
+import { ApiUrl } from "@/utils/BaseUrl.js";
+import { DataLayer } from "../context/UserDataProvider.js";
 import axios from "axios";
 
 const ImageUploader = () => {
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(null);
   const [caption, setCaption] = useState("");
-  const { setLoading, setRefresh, refresh } = useContext(UserDataProvider);
+  const { setLoading, setRefresh } = useContext(DataLayer);
 
   const submitHandler = async (e) => {
-    e.preventDefault();
     setLoading(true);
 
     try {
       console.log("Calling");
       console.log(selectedImage);
 
-      const { data } = await axios.post(`${server}/api/newPost`, {
-        content : caption,
-        img : selectedImage
-      }, {
-        withCredentials: true,
-      });
+      const { data } = await axios.post(
+        `${ApiUrl}/api/newPost`,
+        {
+          content: caption,
+          img: selectedImage,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       console.log("After Call");
       setCaption("");
-      toast(data.message);
       setRefresh((prev) => !prev);
       setLoading(false);
+      toast.success(data.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.error("Error:", error);
-      toast(error.response.data.message);
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    router.push("/userDash");
-  }, [refresh, router]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -56,7 +62,7 @@ const ImageUploader = () => {
 
   return (
     <>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={() => submitHandler}>
         <textarea
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
@@ -88,15 +94,15 @@ const ImageUploader = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                     />
                   </svg>
                   <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span className="font-bold">Click to upload</span> or drag and
-                    drop
+                    <span className="font-bold">Click to upload</span> or drag
+                    and drop
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     SVG, PNG, JPG or GIF (MAX. 800x400px)

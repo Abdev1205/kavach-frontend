@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-toastify";
-import { UserDataProvider } from "../context/UserDataProvider.js";
+import { DataLayer } from "../context/UserDataProvider.js";
 import { PiSlidersLight } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
@@ -12,15 +12,16 @@ import NewsFeed from "@/components/NewsFeed";
 import TrendingFeed from "@/components/TrendingFeed";
 import ImageUploader from "@/components/ImageUploader.js";
 import axios from "axios";
-import { server } from "@/pages/index.js";
+import { ApiUrl } from "@/utils/BaseUrl.js";
 const Feed = () => {
-  const { refresh, setRefresh, loading, setLoading } = useContext(UserDataProvider);
+  const { refresh, setRefresh, loading, setLoading } = useContext(DataLayer);
   const [post, setPost] = useState(false);
   const [feed, setFeed] = useState([]);
 
   useEffect(() => {
+    console.log("API called: ", refresh);
     const { data } = axios
-      .get(`${server}/api/fetchFeed`, {
+      .get(`${ApiUrl}/api/fetchFeed`, {
         withCredentials: true,
       })
       .then((res) => {
