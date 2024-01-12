@@ -8,6 +8,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#080F25",
+        second : "#101935",
+        second2 : "#1F253B",
+        primaryBg: "#0C0C0C",
+        primaryLight: "#ff8127",
+        secondary: "#F9FAFB",
+        secondaryBg: "#181818",
+        linkedinBg: "#0e9fff",
+        instagramBg: "#fe0582",
+        borderBg : "#1F2A4A",
+        fontCol : "#7E88AE",
+        fontCol2 : "#AEB9E1",
+        fontSec : "#899BD3",
+        btn : "#6C72FF",
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

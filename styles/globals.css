@@ -2,9 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+.sidebar-icon {
+  @apply relative flex items-center justify-center 
+  h-12 w-12 mt-2 mb-2 mx-auto  
+bg-gray-700 hover:bg-slate-500 dark:bg-gray-800 
+text-slate-400 hover:text-white
+  hover:rounded-xl rounded-3xl
+  transition-all duration-150 ease-linear
+  cursor-pointer shadow-lg;
+}
+
+.sidebar-tooltip {
+  @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md
+  text-white bg-gray-900 
+  text-xs font-bold 
+  transition-all duration-100 scale-0 origin-left;
+}
+
+.sidebar-hr {
+  @apply bg-borderBg dark:bg-gray-800 
+  border border-gray-200 dark:border-gray-800 rounded-full
+  mx-2;
+}
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
 body {
   -webkit-tap-highlight-color: transparent;
-
 }
 
 body:focus {
@@ -21,10 +54,6 @@ body:focus {
   user-select: none;
 }
 
-.no-select:focus {
-  outline: none !important;
-}
-
 /* night mode switch code  */
 .switch {
   font-size: 17px;
@@ -32,7 +61,7 @@ body:focus {
   display: inline-block;
   width: 64px;
   height: 34px;
-  scale: .7;
+  scale: 0.7;
 }
 
 .switch input {
@@ -48,8 +77,8 @@ body:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #73C0FC;
-  transition: .4s;
+  background-color: #73c0fc;
+  transition: 0.4s;
   border-radius: 30px;
 }
 
@@ -63,7 +92,7 @@ body:focus {
   bottom: 2px;
   z-index: 2;
   background-color: #e8e8e8;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .sun svg {
@@ -76,7 +105,7 @@ body:focus {
 }
 
 .moon svg {
-  fill: #73C0FC;
+  fill: #73c0fc;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -91,7 +120,6 @@ body:focus {
 }
 
 @keyframes rotate {
-
   0% {
     transform: rotate(0);
   }
@@ -107,7 +135,6 @@ body:focus {
 }
 
 @keyframes tilt {
-
   0% {
     transform: rotate(0deg);
   }
@@ -125,15 +152,15 @@ body:focus {
   }
 }
 
-.input:checked+.slider {
+.input:checked + .slider {
   background-color: #183153;
 }
 
-.input:focus+.slider {
+.input:focus + .slider {
   box-shadow: 0 0 1px #183153;
 }
 
-.input:checked+.slider:before {
+.input:checked + .slider:before {
   transform: translateX(30px);
 }
 
@@ -155,7 +182,6 @@ body:focus {
   src: url(../public/Fonts/lora/Lora-Regular.ttf);
   font-weight: 400;
 }
-
 
 @font-face {
   font-family: nunito;
@@ -203,7 +229,6 @@ body:focus {
   filter: drop-shadow(0px 0px 49px rgba(108, 114, 255, 0.32));
 }
 
-
 /* loader code  */
 #outline {
   stroke-dasharray: 2.42777px, 242.77666px;
@@ -247,6 +272,7 @@ body:focus {
 }
 
 
+
 /* left panel code */
 .panel-shadow {
   box-shadow: 15px 0px 61.2px 2px #070D22;
@@ -264,3 +290,4 @@ body:focus {
   scrollbar-width: none;
   /* Firefox */
 }
+

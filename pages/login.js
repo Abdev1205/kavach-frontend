@@ -51,6 +51,7 @@ const Login = () => {
         else if (res.data.redirectURL) {
           redirect = `${res.data.redirectURL}`
         }
+        console.log(redirect);
         router.push(redirect);
       }
     } catch (error) {

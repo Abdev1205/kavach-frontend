@@ -19,6 +19,7 @@ const UserDataProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   const [loginInit, setLoginInit] = useState(false)
   const [roleInit, setRoleInit] = useState(false)
   const [role, setRole] = useState("");
@@ -31,6 +32,7 @@ const UserDataProvider = ({ children }) => {
   const userRole = Cookies.get('userRole');
   console.log("access token", token, " lenght")
   console.log("role token", userRole)
+  console.log("Refresh: ", refresh)
   // if (token) {
   //   setIsAuthenticated(true);
   // }
@@ -130,7 +132,7 @@ const UserDataProvider = ({ children }) => {
     };
   }, [loading]);
   return (
-    <DataLayer.Provider value={{ isAuthenticated, setIsAuthenticated, loading, setLoading, user, setUser, role, setRole, roleInit, setRoleInit, city, setCity, loginInit, setLoginInit }} >
+    <DataLayer.Provider value={{setRefresh,refresh, isAuthenticated, setIsAuthenticated, loading, setLoading, user, setUser, role, setRole, roleInit, setRoleInit, city, setCity, loginInit, setLoginInit }} >
       <LoadingAnimation />
       {children}
     </DataLayer.Provider>
