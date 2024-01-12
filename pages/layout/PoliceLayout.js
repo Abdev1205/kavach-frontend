@@ -3,6 +3,8 @@ import { useContext } from 'react'
 import { DataLayer } from '@/context/UserDataProvider'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import Panel from '@/components/common/Leftpanel.js/Panel'
+
 
 
 const PoliceLayout = ({ children }) => {
@@ -27,7 +29,18 @@ const PoliceLayout = ({ children }) => {
   }
   return (
     <>
-      {children}
+      {/* <div className=' bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative ' >
+        <Panel />
+
+        <h2>Abhay</h2>
+        {children}
+        <div className=' w-[30rem] h-[100%] bg-blue-500 ' >
+          <h1>Hello box</h1>
+        </div>
+      </div> */}
+      <div className=' w-[100%] ' >
+        {children}
+      </div>
     </>
   )
 }
