@@ -37,10 +37,6 @@ const Panel = () => {
 
   const socialLinkData = [
     {
-      name: "Social Media",
-      href: "/police/social/media"
-    },
-    {
       name: "Investigation",
       href: "/police/social/investigate"
     },

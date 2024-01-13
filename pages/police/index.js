@@ -71,7 +71,7 @@ const index = () => {
             </div>
             <div>
               <div className=' w-[100%] mt-[1rem]  ' >
-                <h2 className=' text-[#6C72FF] text-[1.1rem]  w-[15rem] ' >Recent FIr </h2>
+                <h2 className=' text-[#6C72FF] text-[1.1rem]  w-[15rem] ' >Recent FIR </h2>
                 <RecentFir />
               </div>
               <div className=' w-[100%] mt-[1.5rem]  ' >
