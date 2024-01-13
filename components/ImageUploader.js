@@ -11,8 +11,9 @@ const ImageUploader = () => {
   const { setLoading, setRefresh } = useContext(DataLayer);
 
   const submitHandler = async (e) => {
+    e.preventDefault();
     setLoading(true);
-
+    console.log("Creating")
     try {
       console.log("Calling");
       console.log(selectedImage);
@@ -62,7 +63,7 @@ const ImageUploader = () => {
 
   return (
     <>
-      <form onSubmit={() => submitHandler}>
+      <form onSubmit={submitHandler}>
         <textarea
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
