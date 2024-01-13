@@ -12,6 +12,7 @@ const ImageUploader = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     console.log("Creating")
     try {
