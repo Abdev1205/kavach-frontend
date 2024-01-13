@@ -49,7 +49,7 @@ const Panel = () => {
 
   return (
     <>
-      <div className=' bg-[#080F25] panel-shadow border-r-[1px] border-[#1F2A4A] w-[18rem] h-[100vh] flex flex-col  ' >
+      <div className=' bg-[#080F25] panel-shadow border-r-[1px] border-[#1F2A4A] w-[18rem] h-[100vh] flex flex-col flex-shrink-0  ' >
         <PanelHeader />
         <div className=' scrollbar-hide flex flex-col gap-[.5rem] px-[1.5rem] py-[1.5rem] h-[61.4vh] overflow-y-scroll  ' >
           <SingleLinks name={"Dashboard"} icon={<GoHomeFill />} href={'/police'} />
