@@ -1,18 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import toast from "react-toastify";
 import { DataLayer } from "../context/UserDataProvider.js";
 import { PiSlidersLight } from "react-icons/pi";
-import { FaRegHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import { RxCross1 } from "react-icons/rx";
-import { PiChatTeardropTextBold } from "react-icons/pi";
-import { LuSend } from "react-icons/lu";
-import { MdOutlineVerifiedUser, MdCreate } from "react-icons/md";
+import { MdCreate } from "react-icons/md";
 import NewsFeed from "@/components/NewsFeed";
 import TrendingFeed from "@/components/TrendingFeed";
 import ImageUploader from "@/components/ImageUploader.js";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl.js";
+import FeedChips from "@/components/user/Social/FeedChips.js";
+import SortChips from "@/components/user/Social/SortChips.js";
 const Feed = () => {
   const { refresh, setRefresh, loading, setLoading } = useContext(DataLayer);
   const [post, setPost] = useState(false);
@@ -20,14 +17,19 @@ const Feed = () => {
 
   useEffect(() => {
     console.log("API called: ", refresh);
-    const { data } = axios
+    setLoading(true);
+    console.log("Loading: ", loading);
+    axios
       .get(`${ApiUrl}/api/fetchFeed`, {
         withCredentials: true,
       })
       .then((res) => {
-        setFeed(res.data.userFeed);
+        setFeed(res.data.updatedUserFeed);
       });
+    console.log("Feed: ");
     console.log(feed);
+    setLoading(false);
+    console.log("Loading: ", loading);
   }, [refresh]);
 
   return (
@@ -59,7 +61,7 @@ const Feed = () => {
               <PiSlidersLight className="w-6 h-6 mr-6" />
               Sort
             </div>
-            <Chips text="Jaipur" />
+            <SortChips text="Jaipur" />
           </div>
         </div>
         <button
@@ -70,7 +72,19 @@ const Feed = () => {
         </button>
         <div className="w-full h-[87vh] px-6 py-6 flex flex-grow flex-col items-center gap-6 overflow-auto scroll-m-40 overflow-x-hidden overflow-y-auto">
           {feed.map((item, itemVal) => (
-            <FeedChips content={item.content} key={itemVal} img={item.img} />
+            <FeedChips
+              content={item.content}
+              key={itemVal}
+              postId={item._id}
+              img={item.img}
+              likes={item.likeCount}
+              comments={item.commentCount}
+              likeStatus={item.liked}
+              name={item.name}
+              time={item.timestamp}
+              setRefresh={setRefresh}
+              loading={loading}
+            />
           ))}
         </div>
       </div>
@@ -94,34 +108,7 @@ const Feed = () => {
   );
 };
 
-const Chips = ({ text }) => {
-  return (
-    <div className="flex items-center bg-second p-4 rounded-lg w-32 text-xl hover:cursor-pointer">
-      <RxCross1 className="w-6 h-6 mt-1 mr-4" />
-      {text}
-    </div>
-  );
-};
 
-const FeedChips = ({ img, content, user }) => {
-  return (
-    <div className=" bg-[#101935] w-full min-h-[70vh] rounded-xl border-borderBg border-[0.2vh] text-fontSec">
-      
-      <div className="py-7 px-2">{content}</div>
-      <div className=" bg-[#25234f] w-full h-[50vh] overflow-hidden ">
-        {<img src={`${img}`} alt="Uploaded" />}
-      </div>
-      <div className="px-8 py-2">
-        <div className=" flex flex-grow items-center justify-around h-14">
-          <FaRegHeart className="h-6 w-6 text-btn hover:cursor-pointer" />
-          <PiChatTeardropTextBold className="h-7 w-7 text-btn hover:cursor-pointer" />
-          <LuSend className="h-6 w-6 text-btn hover:cursor-pointer" />
-          <MdOutlineVerifiedUser className="h-7 w-7 text-btn hover:cursor-pointer" />
-        </div>
-      </div>
-    </div>
-  );
-};
 const Divider2 = () => (
   <div className="h-[0.1vh] rounded-xl my-4 mx-4 bg-[#4E546B]" />
 );

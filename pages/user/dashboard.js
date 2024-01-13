@@ -1,9 +1,9 @@
 import React from 'react'
-
+import UserDash from "../userDash";
 const UserDashboard = () => {
   return (
     <div>
-      <h1>user dashboard</h1>
+      <h1><UserDash /></h1>
     </div>
   )
 }
