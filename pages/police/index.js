@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PoliceRoleLayer from '../(protectedLayer)/PoliceRoleLayer'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useContext } from 'react'
@@ -11,11 +11,13 @@ import AnalyticsCard from '@/components/police/dashboard/analytics/AnalyticsCard
 import { FirAnalyticsImage, FeedbackAnalytics, CaseAnaytics, CrimeAnalytics } from "../../public/assetsManager"
 import RecentFir from '@/components/police/dashboard/recent/RecentFir'
 import RecentFeedback from '@/components/police/dashboard/recent/RecentFeedback'
+import RegisterFir from '@/components/modals/RegisterFir'
 
 
 const index = () => {
   const { setIsAuthenticated } = useContext(DataLayer);
   const router = useRouter()
+
 
   const analyticsData = [
     {
@@ -53,10 +55,12 @@ const index = () => {
   ]
 
 
+
+
   return (
     <>
-
       <PoliceLayout>
+
         <div className=' bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative flex-shrink ' >
           <Panel />
           <div className=' w-[81%] h-[100vh] flex flex-col items-center px-[2.5rem] pt-[1rem] text-[#AEB9E1] text-[2rem] ' >

@@ -25,6 +25,7 @@ const Feed = () => {
       })
       .then((res) => {
         setFeed(res.data.updatedUserFeed);
+        console.log(res.data.updatedUserFeed)
       });
     console.log("Feed: ");
     console.log(feed);

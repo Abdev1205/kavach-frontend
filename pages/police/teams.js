@@ -34,7 +34,7 @@ const Teams = () => {
 
             <div className=' w-[100%] flex  justify-between items-center mt-[1rem] ' >
               <SortData sortValue={sortValue} setSortValue={setSortValue} sortOptionData={sortOptionData} />
-              <div className=' flex items-center ' >
+              <div className=' flex items-center gap-[.5rem] ' >
                 <h2 className=' text-[1.12rem] font-nunito ' >I am avialable</h2>
                 <Slider switchOn={switchOn} setSwitchOn={setSwitchOn} />
               </div>

@@ -115,7 +115,7 @@ const Register = () => {
               <label htmlFor="city" className=' text-[#AEB9E180]  ' >City <span className=' text-red-600 ' >*</span></label>
               <input onChange={(e) => setCity(e.target.value)} className=' bg-[#8C8C9A1F] text-[#AEB9E180] px-[1rem] py-[.5rem] rounded-md outline-none focus:outline-[#6c71ff5c] ' type="text" id="password" name="city" placeholder="Enter your City " />
             </div>
-            <button type='submit' className={`   ${valid ? "opacity-100 cursor-pointer" : "opacity-25 cursor-not-allowed "} bg-[#6C72FF] text-white px-[.5rem] py-[.5rem] rounded-md mt-[1rem] `} >Register</button>
+            <button type='submit' className={`  active:scale-95 duration-300  ${valid ? "opacity-100 cursor-pointer" : "opacity-25 cursor-not-allowed "} bg-[#6C72FF] text-white px-[.5rem] py-[.5rem] rounded-md mt-[1rem] `} >Register</button>
 
 
             <div className=' flex justify-center gap-[.4rem] ' >

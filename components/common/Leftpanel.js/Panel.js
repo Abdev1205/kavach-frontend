@@ -14,8 +14,8 @@ const Panel = () => {
 
   const firLinkData = [
     {
-      name: "Reported",
-      href: "/police/fir/report"
+      name: "Complaint",
+      href: "/police/fir/complaint"
     },
     {
       name: "Registered",

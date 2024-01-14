@@ -4,36 +4,28 @@
 
 @layer components {
   .sidebar-icon {
-    @apply relative flex items-center justify-center 
-    h-12 w-12 mt-2 mb-2 mx-auto  
-  bg-gray-700 hover:bg-slate-500 dark:bg-gray-800 
-  text-slate-400 hover:text-white
-    hover:rounded-xl rounded-3xl
-    transition-all duration-150 ease-linear
-    cursor-pointer shadow-lg;
+    @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto bg-gray-700 hover:bg-slate-500 dark:bg-gray-800 text-slate-400 hover:text-white hover:rounded-xl rounded-3xl transition-all duration-150 ease-linear cursor-pointer shadow-lg;
   }
 
-.sidebar-tooltip {
-  @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md
-  text-white bg-gray-900 
-  text-xs font-bold 
-  transition-all duration-100 scale-0 origin-left;
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left;
+  }
+
+  .sidebar-hr {
+    @apply bg-borderBg dark:bg-gray-800 border border-gray-200 dark:border-gray-800 rounded-full mx-2;
+  }
 }
 
-.sidebar-hr {
-  @apply bg-borderBg dark:bg-gray-800 
-  border border-gray-200 dark:border-gray-800 rounded-full
-  mx-2;
-}
-}
 html {
   overflow: scroll;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
 }
 
 /* Optional: show position indicator in red */
@@ -345,152 +337,35 @@ body:focus {
   box-shadow: 0px 0px 5.4px 0px rgba(205, 29, 50, 0.76) inset;
 }
 
-/* slider code  */
-.switch {
-  /* switch */
-  --switch-width: 46px;
-  --switch-height: 24px;
-  --switch-bg: rgb(131, 131, 131);
-  --switch-checked-bg: rgb(0, 218, 80);
-  --switch-offset: calc((var(--switch-height) - var(--circle-diameter)) / 2);
-  --switch-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
-  /* circle */
-  --circle-diameter: 18px;
-  --circle-bg: #fff;
-  --circle-shadow: 1px 1px 2px rgba(146, 146, 146, 0.45);
-  --circle-checked-shadow: -1px 1px 2px rgba(163, 163, 163, 0.45);
-  --circle-transition: var(--switch-transition);
-  /* icon */
-  --icon-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
-  --icon-cross-color: var(--switch-bg);
-  --icon-cross-size: 6px;
-  --icon-checkmark-color: var(--switch-checked-bg);
-  --icon-checkmark-size: 10px;
-  /* effect line */
-  --effect-width: calc(var(--circle-diameter) / 2);
-  --effect-height: calc(var(--effect-width) / 2 - 1px);
-  --effect-bg: var(--circle-bg);
-  --effect-border-radius: 1px;
-  --effect-transition: all .2s ease-in-out;
-}
-
-.switch input {
-  display: none;
-}
-
-.switch {
-  display: inline-block;
-}
-
-.switch svg {
-  -webkit-transition: var(--icon-transition);
-  -o-transition: var(--icon-transition);
-  transition: var(--icon-transition);
-  position: absolute;
-  height: auto;
-}
-
-.switch .checkmark {
-  width: var(--icon-checkmark-size);
-  color: var(--icon-checkmark-color);
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-}
-
-.switch .cross {
-  width: var(--icon-cross-size);
-  color: var(--icon-cross-color);
-}
-
-.slider {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: var(--switch-width);
-  height: var(--switch-height);
-  background: var(--switch-bg);
-  border-radius: 999px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  position: relative;
-  -webkit-transition: var(--switch-transition);
-  -o-transition: var(--switch-transition);
-  transition: var(--switch-transition);
-  cursor: pointer;
-}
-
-.circle {
-  width: var(--circle-diameter);
-  height: var(--circle-diameter);
-  background: var(--circle-bg);
-  border-radius: inherit;
-  -webkit-box-shadow: var(--circle-shadow);
-  box-shadow: var(--circle-shadow);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-transition: var(--circle-transition);
-  -o-transition: var(--circle-transition);
-  transition: var(--circle-transition);
-  z-index: 1;
-  position: absolute;
-  left: var(--switch-offset);
-}
-
-.slider::before {
-  content: "";
-  position: absolute;
-  width: var(--effect-width);
-  height: var(--effect-height);
-  left: calc(var(--switch-offset) + (var(--effect-width) / 2));
-  background: var(--effect-bg);
-  border-radius: var(--effect-border-radius);
-  -webkit-transition: var(--effect-transition);
-  -o-transition: var(--effect-transition);
-  transition: var(--effect-transition);
-}
-
-/* actions */
-
-.switch input:checked+.slider {
-  background: var(--switch-checked-bg);
-}
-
-.switch input:checked+.slider .checkmark {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-.switch input:checked+.slider .cross {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-}
-
-.switch input:checked+.slider::before {
-  left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
-}
-
-.switch input:checked+.slider .circle {
-  left: calc(100% - var(--circle-diameter) - var(--switch-offset));
-  -webkit-box-shadow: var(--circle-checked-shadow);
-  box-shadow: var(--circle-checked-shadow);
-}
-
 
 .available-bg {
   border-radius: 3px;
   background: rgba(40, 86, 48, 0.28);
   box-shadow: 0px 0px 9.4px 2px rgba(106, 196, 120, 0.43) inset;
+}
+
+.register-fir-bg {
+  border-radius: 12px;
+  border: 1px solid var(--primary-btn, #6C72FF);
+  background: var(--Secondary-bg, #101935);
+  box-shadow: 0px 0px 250px 50px #6C72FF;
+
+}
+
+.stage-no-select {
+  border-radius: 3px;
+  background: rgba(149, 152, 255, 0.081);
+  box-shadow: 0px 0px 4.6px 0px rgba(139, 149, 233, 0.248) inset;
+}
+
+.stage-select {
+  border-radius: 3px;
+  background: rgba(76, 56, 16, 0.80);
+}
+
+.post-social-button {
+  border-radius: 50%;
+  border: 1px solid var(--primary-btn, #6C72FF);
+  background: var(--primary-btn, #6C72FF);
+  box-shadow: 0px 0px 77.8px 12px rgba(108, 114, 255, 0.41);
 }
