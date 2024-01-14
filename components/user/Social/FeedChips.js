@@ -18,8 +18,10 @@ const FeedChips = ({
   loading,
   name,
   time,
+  refresh
 }) => {
   const [liked, setLiked] = useState(likeStatus);
+  const [like, setLike] = useState(likes);
   const [showComment, setShowComment] = useState(false);
   const [expandImg, setExpandImg] = useState(false);
   const toggleExpandImg = () => {
@@ -27,6 +29,11 @@ const FeedChips = ({
   };
   const toggleLike = () => {
     setLiked(!liked);
+    if(!liked){
+      setLike(like + 1);
+    }else{
+      setLike(like - 1);
+    }
     try {
       axios.post(
         `${ApiUrl}/api/updateLike`,
@@ -97,7 +104,7 @@ const FeedChips = ({
       <div className="px-8 py-2">
         <div className=" flex flex-grow items-center justify-around h-14">
           <div className="text-lg items-center flex flex-row">
-            <span className=" p-2">{likes}</span>
+            <span className=" p-2">{like}</span>
             {!liked ? (
               <button disabled={loading}>
                 <FaRegHeart

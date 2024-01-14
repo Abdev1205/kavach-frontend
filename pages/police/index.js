@@ -15,45 +15,82 @@ import RegisterFir from '@/components/modals/RegisterFir'
 
 
 const index = () => {
+  const { refresh } = useContext(DataLayer);
+  const [FirChip, setFirChip] = useState({});
+
+  const [casessolved, setCasesSolved] = useState({});
+  const [feedbackChip, setFeedbackChip] = useState({});
+  const [crimeChip, setCrimeChip] = useState({});
+
+  const fethchData = async () => {
+    try {
+      const firData = await axios.get(`${ApiUrl}/api/totalFirCount`, {}, {});
+      const SolvedCasesData = await axios.get(`${ApiUrl}/api/getSolvedCaseCount`,{},{});
+      const FeedbackCount = await axios.get(`${ApiUrl}/api/getFeedbackCount`);
+      const crimeData = await axios.get(`${ApiUrl}/api/getCrimeRateCount`, {}, {});
+
+      // console.log("FirData: ");
+      // console.log(firData);
+
+      // console.log("FeedbackCount: ");
+      // console.log(FeedbackCount);
+
+      // console.log("SolvedCasesData: ");
+      // console.log(SolvedCasesData);
+
+      // console.log("crimeData: ");
+      // console.log(crimeData)
+      
+      setCasesSolved(SolvedCasesData.data);
+      setFirChip(firData.data);
+      setFeedbackChip(FeedbackCount.data);
+      setCrimeChip(crimeData.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const { setIsAuthenticated } = useContext(DataLayer);
-  const router = useRouter()
+  const router = useRouter();
+
+  useEffect(() => {
+    fethchData();
+  }, [router, refresh]);
 
 
   const analyticsData = [
     {
       id: 0,
       name: "FIR reports",
-      count: 1250,
+      count: FirChip.totalNo,
       increased: true,
       percent: 4.8,
-      img: FirAnalyticsImage
+      img: FirAnalyticsImage,
     },
     {
       id: 1,
       name: "Feedback",
-      count: 1732,
+      count: feedbackChip.totalFeedbackCount,
       increased: true,
-      percent: 9.8,
-      img: FeedbackAnalytics
+      percent: feedbackChip.feedbackRate,
+      img: FeedbackAnalytics,
     },
     {
       id: 2,
       name: "Case Solved",
-      count: 2768,
+      count: casessolved.total,
       increased: true,
-      percent: 15.3,
-      img: CaseAnaytics
+      percent: casessolved.solvedCasesRate,
+      img: CaseAnaytics,
     },
     {
       id: 3,
       name: "Crime Rate",
-      count: 57,
+      count: crimeChip.totalFir,
       increased: false,
-      percent: 1.35,
-      img: CrimeAnalytics
-    }
-  ]
-
+      percent: crimeChip.crimeRate,
+      img: CrimeAnalytics,
+    },
+  ];
 
 
 
@@ -61,34 +98,34 @@ const index = () => {
     <>
       <PoliceLayout>
 
+
         <div className=' bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative flex-shrink ' >
+
           <Panel />
-          <div className=' w-[81%] h-[100vh] flex flex-col items-center px-[2.5rem] pt-[1rem] text-[#AEB9E1] text-[2rem] ' >
-            <div className=' flex justify-between w-[100%]   ' >
-              {
-                analyticsData && analyticsData.map((data, index) => {
-                  return (
-                    <AnalyticsCard key={index} data={data} />
-                  )
-                })
-              }
+          <div className=" w-[81%] h-[100vh] flex flex-col items-center px-[2.5rem] pt-[1rem] text-[#AEB9E1] text-[2rem] ">
+            <div className=" flex justify-between w-[100%]   ">
+              {analyticsData &&
+                analyticsData.map((data, index) => {
+                  return <AnalyticsCard key={index} data={data} />;
+                })}
             </div>
             <div>
               <div className=' w-[100%] mt-[1rem]  ' >
                 <h2 className=' text-[#6C72FF] text-[1.1rem]  w-[15rem] ' >Recent FIR </h2>
                 <RecentFir />
               </div>
-              <div className=' w-[100%] mt-[1.5rem]  ' >
-                <h2 className=' text-[#6C72FF] text-[1.1rem]  w-[15rem] ' >Recent Feedback</h2>
+              <div className=" w-[100%] mt-[1.5rem]  ">
+                <h2 className=" text-[#6C72FF] text-[1.1rem]  w-[15rem] ">
+                  Recent Feedback
+                </h2>
                 <RecentFeedback />
               </div>
             </div>
           </div>
         </div>
       </PoliceLayout>
-
     </>
-  )
-}
+  );
+};
 
-export default index
+export default index;

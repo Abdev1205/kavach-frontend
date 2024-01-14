@@ -8,6 +8,7 @@
   }
 
   .sidebar-tooltip {
+
     @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left;
   }
 
@@ -22,6 +23,7 @@ html {
 }
 
 ::-webkit-scrollbar {
+
   width: 0;
   /* Remove scrollbar space */
   background: transparent;
@@ -149,15 +151,15 @@ body:focus {
   }
 }
 
-.input:checked+.slider {
+.input:checked + .slider {
   background-color: #183153;
 }
 
-.input:focus+.slider {
+.input:focus + .slider {
   box-shadow: 0 0 1px #183153;
 }
 
-.input:checked+.slider:before {
+.input:checked + .slider:before {
   transform: translateX(30px);
 }
 
@@ -268,12 +270,9 @@ body:focus {
   }
 }
 
-
-
 /* left panel code */
 .panel-shadow {
-  box-shadow: 15px 0px 61.2px 2px #070D22;
-
+  box-shadow: 15px 0px 61.2px 2px #070d22;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -317,6 +316,7 @@ body:focus {
   background: rgba(140, 140, 154, 0.12);
   box-shadow: 0px 0px 13.6px 0px rgba(52, 67, 198, 0.46) inset;
 }
+
 
 .register-fir-button {
   border-radius: 5px;
@@ -369,3 +369,4 @@ body:focus {
   background: var(--primary-btn, #6C72FF);
   box-shadow: 0px 0px 77.8px 12px rgba(108, 114, 255, 0.41);
 }
+

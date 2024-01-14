@@ -1,133 +1,118 @@
-import React, { useState } from 'react';
+import React, {useState} from "react";
+import { LuLogOut } from "react-icons/lu";
 
 const ComplaintForm = () => {
-  const [complainant, setComplainant] = useState('');
-  const [complainantNumber, setComplainantNumber] = useState('');
-  const [respondent, setRespondent] = useState('');
-  const [location, setLocation] = useState('');
-  const [complaintSubject, setComplaintSubject] = useState('');
-  const [complaintTime, setComplaintTime] = useState('');
-  const [subjectOfComplaint, setSubjectOfComplaint] = useState('');
-  const [complaintHappened, setComplaintHappened] = useState('');
-  const [processingTime, setProcessingTime] = useState('');
-  const [reviewTime, setReviewTime] = useState('');
-  const [complaints, setComplaints] = useState('');
-  const [processor, setProcessor] = useState('');
-  const [solution, setSolution] = useState('');
-  const [customerResponse, setCustomerResponse] = useState('');
-  const [processingMethodReview, setProcessingMethodReview] = useState('');
-  const [remark, setRemark] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add logic to handle form submission
-    // You can send the form data to your server or perform any other necessary actions
-    console.log({
-      complainant,
-      complainantNumber,
-      respondent,
-      location,
-      complaintSubject,
-      complaintTime,
-      subjectOfComplaint,
-      complaintHappened,
-      processingTime,
-      reviewTime,
-      complaints,
-      processor,
-      solution,
-      customerResponse,
-      processingMethodReview,
-      remark,
-    });
-  };
+  const [anon, setAnon] = useState(false);
 
   return (
-    <div className=" text-fontSec flex flex-col">
-      <h2>Customer Complaint Record Form</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Complainant:
-          <input type="text" value={complainant} onChange={(e) => setComplainant(e.target.value)} />
-        </label>
+    <div className=" text-fontCol font-nunito justify-center flex flex-grow">
+      <div className="flex flex-col w-1/2 items-center border-r-2 border-l-2 border-borderBg ">
+        <div className=" p-6 text-4xl border-b-2 w-full text-center border-borderBg">
+          Complaint Form
+        </div>
 
-        <label>
-          Complainant's Telephone Number:
-          <input type="tel" value={complainantNumber} onChange={(e) => setComplainantNumber(e.target.value)} />
-        </label>
-
-        <label>
-          Respondent:
-          <input type="text" value={respondent} onChange={(e) => setRespondent(e.target.value)} />
-        </label>
-
-        <label>
-          Location Occur:
-          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-        </label>
-
-        <label>
-          Complaint Subject:
-          <input type="text" value={complaintSubject} onChange={(e) => setComplaintSubject(e.target.value)} />
-        </label>
-
-        <label>
-          Complaint Time:
-          <input type="text" value={complaintTime} onChange={(e) => setComplaintTime(e.target.value)} />
-        </label>
-
-        <label>
-          Subject of Complaint:
-          <input type="text" value={subjectOfComplaint} onChange={(e) => setSubjectOfComplaint(e.target.value)} />
-        </label>
-
-        <label>
-          When the Complaint Happened:
-          <input type="text" value={complaintHappened} onChange={(e) => setComplaintHappened(e.target.value)} />
-        </label>
-
-        <label>
-          Processing Time for Complaints:
-          <input type="text" value={processingTime} onChange={(e) => setProcessingTime(e.target.value)} />
-        </label>
-
-        <label>
-          Review Time:
-          <input type="text" value={reviewTime} onChange={(e) => setReviewTime(e.target.value)} />
-        </label>
-
-        <label>
-          Complaints:
-          <textarea value={complaints} onChange={(e) => setComplaints(e.target.value)} />
-        </label>
-
-        <label>
-          Processor:
-          <input type="text" value={processor} onChange={(e) => setProcessor(e.target.value)} />
-        </label>
-
-        <label>
-          Solution:
-          <textarea value={solution} onChange={(e) => setSolution(e.target.value)} />
-        </label>
-
-        <label>
-          Customer Response:
-          <textarea value={customerResponse} onChange={(e) => setCustomerResponse(e.target.value)} />
-        </label>
-
-        <label>
-          Processing Method Review:
-          <textarea value={processingMethodReview} onChange={(e) => setProcessingMethodReview(e.target.value)} />
-        </label>
-
-        <label>
-          Remark:
-          <textarea value={remark} onChange={(e) => setRemark(e.target.value)} />
-        </label>
-
-        <button type="submit">Submit</button>
-      </form>
+        <div className=" gap-2 w-full flex p-4 justify-evenly">
+          <div className="flex-col flex">
+            <label>Name: </label>
+            <input
+              disabled={anon}
+              width={500}
+              className=" p-2 w-56 rounded-lg bg-second"
+              placeholder="Enter name"
+            />
+          </div>
+          <div className="flex-col flex">
+            <label>Phone No: </label>
+            <input
+              disabled={anon}
+              width={500}
+              className=" p-2 w-56 rounded-lg bg-second"
+              placeholder="Enter phone no"
+            />
+          </div>
+        </div>
+        <div className="gap-2 w-full flex p-2 justify-evenly">
+          <div className="flex-col flex">
+            <label>Complaint: </label>
+            <input
+              width={500}
+              className=" p-2 w-56 rounded-lg bg-second"
+              placeholder="Enter Complaint"
+            />
+          </div>
+          <div className="flex-col flex">
+            <label>Complaint Subject: </label>
+            <input
+              width={500}
+              className=" p-2 w-56 rounded-lg bg-second"
+              placeholder="Enter Subject"
+            />
+          </div>
+        </div>
+        <div className="gap-2 w-full flex-col flex px-12 p-4 justify-evenly">
+          <label className=" font-bold">Describe Complaint: </label>
+          <textarea
+            type="textarea"
+            className=" resize-none text-lg px-4 w-full py-2 rounded-md bg-second min-h-32 max-h-32"
+            placeholder="Describe your complaint"
+            required
+          />
+        </div>
+        <div className="flex w-full justify-evenly px-8">
+          <div className="flex-col flex">
+            <label>Your Address: </label>
+            <textarea
+              disabled={anon}
+              type="textarea"
+              className=" resize-none text-md px-4 w-full py-2 rounded-md bg-second min-h-20 max-h-32"
+              placeholder="Enter Address"
+              required
+            />
+          </div>
+          <div className="flex-col flex">
+            <label>Complaint Address: </label>
+            <textarea
+              type="textarea"
+              className=" resize-none text-sm px-4 w-64 py-2 rounded-md bg-second min-h-20 max-h-32"
+              placeholder="Enter Address of where complaint occured"
+              required
+            />
+          </div>
+        </div>
+        <div className=" flex w-full justify-evenly">
+          <div className="flex-col flex">
+            <label>Date: </label>
+            <input
+              width={500}
+              className=" p-2 w-56 rounded-lg bg-second"
+              placeholder="DD/MM/YYYY"
+            />
+          </div>
+          <div className="flex-col flex pb-12">
+            <label>Location: </label>
+            <input
+              width={500}
+              className=" p-2 w-full rounded-lg bg-second"
+              placeholder="Enter Location"
+            />
+          </div>
+        </div>
+        <div className="flex">
+          <div className="flex items-center justify-center">
+            <button className="bg-btn rounded-lg text-white p-4 flex items-center justify-center py-4 pr-10 mt-4">
+              <LuLogOut className="w-6 h-6 mr-6" /> Submit Complaint
+            </button>
+          </div>
+          <div className="flex text-xl mt-3 items-center">
+            <input
+              onClick={() => setAnon(!anon)}
+              className=" mx-4 w-6 h-6"
+              type="checkbox"
+            />{" "}
+            Anonymous
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
