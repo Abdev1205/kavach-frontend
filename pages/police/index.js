@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import PoliceRoleLayer from '../(protectedLayer)/PoliceRoleLayer'
-import { useSession, signIn, signOut } from "next-auth/react"
-import { useContext } from 'react'
-import { DataLayer } from '@/context/UserDataProvider'
-import { useRouter } from 'next/router'
-import axios from 'axios'
-import PoliceLayout from '../layout/PoliceLayout'
-import Panel from '@/components/common/Leftpanel.js/Panel'
-import AnalyticsCard from '@/components/police/dashboard/analytics/AnalyticsCard'
-import { FirAnalyticsImage, FeedbackAnalytics, CaseAnaytics, CrimeAnalytics } from "../../public/assetsManager"
-import RecentFir from '@/components/police/dashboard/recent/RecentFir'
-import RecentFeedback from '@/components/police/dashboard/recent/RecentFeedback'
-import RegisterFir from '@/components/modals/RegisterFir'
-
+import React, { useEffect, useState } from "react";
+import PoliceRoleLayer from "../(protectedLayer)/PoliceRoleLayer";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useContext } from "react";
+import { DataLayer } from "@/context/UserDataProvider";
+import { useRouter } from "next/router";
+import axios from "axios";
+import PoliceLayout from "../layout/PoliceLayout";
+import Panel from "@/components/common/Leftpanel.js/Panel";
+import AnalyticsCard from "@/components/police/dashboard/analytics/AnalyticsCard";
+import {
+  FirAnalyticsImage,
+  FeedbackAnalytics,
+  CaseAnaytics,
+  CrimeAnalytics,
+} from "../../public/assetsManager";
+import RecentFir from "@/components/police/dashboard/recent/RecentFir";
+import RecentFeedback from "@/components/police/dashboard/recent/RecentFeedback";
+import { ApiUrl } from "@/utils/BaseUrl.js";
 
 const index = () => {
   const { refresh } = useContext(DataLayer);
@@ -40,7 +44,7 @@ const index = () => {
 
       // console.log("crimeData: ");
       // console.log(crimeData)
-      
+
       setCasesSolved(SolvedCasesData.data);
       setFirChip(firData.data);
       setFeedbackChip(FeedbackCount.data);
@@ -55,7 +59,6 @@ const index = () => {
   useEffect(() => {
     fethchData();
   }, [router, refresh]);
-
 
   const analyticsData = [
     {
@@ -92,15 +95,10 @@ const index = () => {
     },
   ];
 
-
-
   return (
     <>
       <PoliceLayout>
-
-
-        <div className=' bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative flex-shrink ' >
-
+        <div className=" bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative flex-shrink ">
           <Panel />
           <div className=" w-[81%] h-[100vh] flex flex-col items-center px-[2.5rem] pt-[1rem] text-[#AEB9E1] text-[2rem] ">
             <div className=" flex justify-between w-[100%]   ">
@@ -110,8 +108,10 @@ const index = () => {
                 })}
             </div>
             <div>
-              <div className=' w-[100%] mt-[1rem]  ' >
-                <h2 className=' text-[#6C72FF] text-[1.1rem]  w-[15rem] ' >Recent FIR </h2>
+              <div className=" w-[100%] mt-[1rem]  ">
+                <h2 className=" text-[#6C72FF] text-[1.1rem]  w-[15rem] ">
+                  Recent FIr{" "}
+                </h2>
                 <RecentFir />
               </div>
               <div className=" w-[100%] mt-[1.5rem]  ">
