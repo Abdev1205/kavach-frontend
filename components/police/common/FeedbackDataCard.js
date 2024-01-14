@@ -10,7 +10,7 @@ const FeedbackDataCard = ({ data }) => {
       <div className=' w-[50%] line-clamp-2 ' >
         {data.report}
       </div>
-      <div className={` stage-2 text-[#FFAE11] px-[.3rem] py-[.3rem] w-[6rem] h-[2rem] flex justify-center items-center mx-[1rem]  `} >
+      <div className={` stage-2 text-[#FFAE11] px-[.3rem] py-[.3rem] w-[6rem] h-[2rem] flex justify-center text-[0.8rem] items-center mx-[1rem]  `} >
         {data.hero}
       </div>
       <div className=' w-[4rem] flex flex-col justify-between ' >

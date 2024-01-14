@@ -14,7 +14,6 @@ import GuestLayer from './(protectedLayer)/GuestLayer';
 
 
 
-
 export default function App({ Component, pageProps: { session, ...pageProps }, }) {
   const router = useRouter();
   const protectedRoutePrefixes = ["admin", "police", "user"];

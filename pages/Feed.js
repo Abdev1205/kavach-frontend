@@ -56,9 +56,9 @@ const Feed = () => {
 
       <div className="w-[100vh] h-screen relative">
         <div className="text-fontCol">
-          <div className=" w-full h-24 py-5 px-6 flex gap-6 ">
-            <div className="flex items-center bg-second p-4 rounded-lg w-32 text-xl hover:cursor-pointer">
-              <PiSlidersLight className="w-6 h-6 mr-6" />
+          <div className=" w-full h-20 py-5 px-6 flex gap-6 ">
+            <div className="flex items-center bg-second p-1 rounded-lg w-24 text-xl hover:cursor-pointer">
+              <PiSlidersLight className="w-6 h-6 mr-2 mt-[0.5]" />
               Sort
             </div>
             <SortChips text="Jaipur" />
@@ -84,6 +84,7 @@ const Feed = () => {
               time={item.timestamp}
               setRefresh={setRefresh}
               loading={loading}
+              refresh={refresh}
             />
           ))}
         </div>
@@ -107,7 +108,6 @@ const Feed = () => {
     </>
   );
 };
-
 
 const Divider2 = () => (
   <div className="h-[0.1vh] rounded-xl my-4 mx-4 bg-[#4E546B]" />

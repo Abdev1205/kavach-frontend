@@ -10,8 +10,8 @@ const FirDataCard = ({ data }) => {
       <div className=' w-[50%] line-clamp-2 ' >
         {data.report}
       </div>
-      <div className={` ${data.stage === 1 ? "stage-1 text-[#6C72FF] " : data.stage === 2 ? "stage-2 text-[#FFAE11] " : data.stage === 3 ? "stage-3 text-[#FF132F] " : "stage-4 text-[#16E738] "} px-[.3rem] py-[.3rem] w-[6rem] h-[2rem] flex justify-center items-center mx-[1rem]  `} >
-        {data.stage === 1 ? "registered" : data.stage === 2 ? "investigation" : data.stage === 3 ? "action" : "Case closed"}
+      <div className={` ${data.stage === "registered" ? "stage-1 text-[#6C72FF] " : data.stage === "investigation" ? "stage-2 text-[#FFAE11] " : data.stage === "action" ? "stage-3 text-[#FF132F] " : "stage-4 text-[#16E738] "} px-[.3rem] py-[.3rem] w-[6rem] h-[2rem] flex justify-center items-center mx-[1rem]  `} >
+        {data.stage}
       </div>
       <div className=' w-[4rem] flex flex-col justify-between ' >
         <h2>{data.reportedDate}</h2>
