@@ -5,6 +5,7 @@ import SortData from '@/components/common/filter/SortData'
 import { MdOutlineAddCircle } from "react-icons/md";
 import AllFir from '@/components/police/fir/AllFir';
 import { BiSearch } from "react-icons/bi";
+import RegisterFirButton from '@/components/police/fir/RegisterFirButton';
 
 const Registered = () => {
   const sortOptionData = [
@@ -28,11 +29,8 @@ const Registered = () => {
 
             <div className=' w-[100%] flex justify-between items-center mt-[1rem] ' >
               <SortData sortValue={sortValue} setSortValue={setSortValue} sortOptionData={sortOptionData} />
-              <div className=' w-[12rem] h-[2.5rem] ml-[-4rem] ' >
-                <button className=' register-fir-button w-[100%] h-[100%] text-white flex justify-center items-center gap-[1rem]  ' >
-                  <MdOutlineAddCircle className=' text-[1.12rem] ' />
-                  Register FIR
-                </button>
+              <div className=' ml-[-4rem] ' >
+                <RegisterFirButton />
               </div>
               <div className=' flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ' >
                 <BiSearch className=' text-[1.1rem] ' />

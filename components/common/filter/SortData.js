@@ -26,11 +26,11 @@ const SortData = ({ sortValue, setSortValue, sortOptionData }) => {
       <div className='flex items-center justify-evenly  border-[2px] border-[#191F35]  px-[.4rem] py-[.3rem]  h-[1.8rem] rounded-md text-[.93rem]' >
         {sortValue}
       </div>
-      <div className=' absolute translate-y-[3rem] flex flex-col  min-w-[5rem] bg-second    rounded-md ' >
+      <div className=' absolute translate-y-[3rem] flex flex-col  min-w-[5rem] bg-second z-[15]   rounded-md ' >
         {
           isOpen && sortOptionData.map((data, index) => {
             return (
-              <div onClick={() => handleOptionClick(data.option)} key={index} className=' text-[.86rem] hover:bg-second2 px-[.8rem] py-[.3rem] cursor-pointer  ' >
+              <div onClick={() => handleOptionClick(data.option)} key={index} className='  text-[.86rem] hover:bg-second2 px-[.8rem] py-[.3rem] cursor-pointer  ' >
                 {data.option}
               </div>
             )

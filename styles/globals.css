@@ -4,36 +4,30 @@
 
 @layer components {
   .sidebar-icon {
-    @apply relative flex items-center justify-center 
-    h-12 w-12 mt-2 mb-2 mx-auto  
-  bg-gray-700 hover:bg-slate-500 dark:bg-gray-800 
-  text-slate-400 hover:text-white
-    hover:rounded-xl rounded-3xl
-    transition-all duration-150 ease-linear
-    cursor-pointer shadow-lg;
+    @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto bg-gray-700 hover:bg-slate-500 dark:bg-gray-800 text-slate-400 hover:text-white hover:rounded-xl rounded-3xl transition-all duration-150 ease-linear cursor-pointer shadow-lg;
   }
 
   .sidebar-tooltip {
-    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md
-  text-white bg-gray-900 
-  text-xs font-bold 
-  transition-all duration-100 scale-0 origin-left;
+
+    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left;
   }
 
   .sidebar-hr {
-    @apply bg-borderBg dark:bg-gray-800 
-  border border-gray-200 dark:border-gray-800 rounded-full
-  mx-2;
+    @apply bg-borderBg dark:bg-gray-800 border border-gray-200 dark:border-gray-800 rounded-full mx-2;
   }
 }
+
 html {
   overflow: scroll;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
+
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
 }
 
 /* Optional: show position indicator in red */
@@ -322,3 +316,57 @@ body:focus {
   background: rgba(140, 140, 154, 0.12);
   box-shadow: 0px 0px 13.6px 0px rgba(52, 67, 198, 0.46) inset;
 }
+
+
+.register-fir-button {
+  border-radius: 5px;
+  border: 1px solid var(--primary-btn, #6C72FF);
+  background: var(--primary-btn, #6C72FF);
+  box-shadow: 0px 0px 77.8px 17px rgba(108, 114, 255, 0.41);
+}
+
+.fir-edit-bg {
+  border-radius: 3px;
+  background: rgba(140, 140, 154, 0.12);
+  box-shadow: 0px 0px 13.6px 0px rgba(52, 67, 198, 0.46) inset;
+}
+
+.fir-delete-bg {
+  border-radius: 3px;
+  background: rgba(205, 29, 50, 0.25);
+  box-shadow: 0px 0px 5.4px 0px rgba(205, 29, 50, 0.76) inset;
+}
+
+
+.available-bg {
+  border-radius: 3px;
+  background: rgba(40, 86, 48, 0.28);
+  box-shadow: 0px 0px 9.4px 2px rgba(106, 196, 120, 0.43) inset;
+}
+
+.register-fir-bg {
+  border-radius: 12px;
+  border: 1px solid var(--primary-btn, #6C72FF);
+  background: var(--Secondary-bg, #101935);
+  box-shadow: 0px 0px 250px 50px #6C72FF;
+
+}
+
+.stage-no-select {
+  border-radius: 3px;
+  background: rgba(149, 152, 255, 0.081);
+  box-shadow: 0px 0px 4.6px 0px rgba(139, 149, 233, 0.248) inset;
+}
+
+.stage-select {
+  border-radius: 3px;
+  background: rgba(76, 56, 16, 0.80);
+}
+
+.post-social-button {
+  border-radius: 50%;
+  border: 1px solid var(--primary-btn, #6C72FF);
+  background: var(--primary-btn, #6C72FF);
+  box-shadow: 0px 0px 77.8px 12px rgba(108, 114, 255, 0.41);
+}
+
