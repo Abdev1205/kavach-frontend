@@ -1,33 +1,44 @@
 import React from 'react'
+import { useState } from 'react';
+import { PiSlidersLight } from "react-icons/pi";
 
-const SortData = ({ sortValue, setSortValue }) => {
+const SortData = ({ sortValue, setSortValue, sortOptionData }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedSort, setSelectedSort] = useState('default');
+
+  const handleSortClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (sortOption) => {
+    setSortValue(sortOption);
+    setIsOpen(!isOpen);
+
+    // You'll likely want to trigger a sorting action here based on the selected option
+    console.log('Selected sort option:', sortOption);
+  };
   return (
-    <div className=' bg-[#101935] border-[1px] border-[#191F35] ' >
-
-      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-      </svg>
-      </button>
-
-      <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-          </li>
-        </ul>
+    <div className="flex relative   gap-[1rem]  ">
+      <div onClick={handleSortClick} className=" cursor-pointer flex items-center justify-evenly bg-[#101935] border-[1px] border-[#191F35]  w-[4.5rem]  h-[1.8rem] rounded-md text-[.98rem] ">
+        <PiSlidersLight className=" text-[1.2rem] " />
+        Sort
       </div>
-
-    </div>
-  )
+      <div className='flex items-center justify-evenly  border-[2px] border-[#191F35]  px-[.4rem] py-[.3rem]  h-[1.8rem] rounded-md text-[.93rem]' >
+        {sortValue}
+      </div>
+      <div className=' absolute translate-y-[3rem] flex flex-col  min-w-[5rem] bg-second    rounded-md ' >
+        {
+          isOpen && sortOptionData.map((data, index) => {
+            return (
+              <div onClick={() => handleOptionClick(data.option)} key={index} className=' text-[.86rem] hover:bg-second2 px-[.8rem] py-[.3rem] cursor-pointer  ' >
+                {data.option}
+              </div>
+            )
+          })
+        }
+      </div>
+    </div >
+  );
 }
 
 export default SortData

@@ -2,7 +2,7 @@ import React from 'react'
 
 const FeedbackDataCard = ({ data }) => {
   return (
-    <div className=' flex justify-between items-center gap-[1rem] w-[100%] h-[3.8rem] px-[.8rem] py-[.5rem] border-[1px] border-[#191F35] bg-[#101935] rounded-md  ' >
+    <div className=' feedback-text flex justify-between items-center gap-[1rem] w-[100%] h-[3.8rem] px-[.8rem] py-[.5rem] border-[1px] border-[#191F35] bg-[#101935] rounded-md  ' >
       <div className=' w-[10%] flex flex-col justify-between ' >
         <h2>{data.name}</h2>
         <h2>{data.age} years</h2>

@@ -3,8 +3,9 @@ import FirAnalyticsImage from "./assets/police/dashboard/fir-anlytics.png"
 import FeedbackAnalytics from "./assets/police/dashboard/feedback-analytics.png"
 import CaseAnaytics from "./assets/police/dashboard/case-analytics.png"
 import CrimeAnalytics from "./assets/police/dashboard/crime-analytics.png"
+import TestPoliceImage from "./assets/police/teams/test-police.png"
 
 
 export {
-  LogoImage, FirAnalyticsImage, FeedbackAnalytics, CaseAnaytics, CrimeAnalytics
+  LogoImage, FirAnalyticsImage, FeedbackAnalytics, CaseAnaytics, CrimeAnalytics, TestPoliceImage
 }
