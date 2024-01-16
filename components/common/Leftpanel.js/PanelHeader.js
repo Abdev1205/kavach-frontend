@@ -19,7 +19,7 @@ const PanelHeader = () => {
       </div>
       <div className=' flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ' >
         <BiSearch className=' text-[1.1rem] ' />
-        <input type="text" className=' bg-[#101935] outline-none text-[.9rem] w-[87%] ' />
+        <input placeholder='Search...' type="text" className=' bg-[#101935] outline-none text-[.9rem] w-[87%] ' />
       </div>
 
     </div>

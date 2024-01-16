@@ -46,7 +46,7 @@ const CreatePost = ({ visible, onClose = () => { }, callback = () => { } }) => {
 
       console.log("After Call");
       setCaption("");
-      setRefresh((prev) => !prev);
+      // setRefresh((prev) => !prev);
       setLoading(false);
       toast.success(data.message, {
         position: "top-center",
@@ -58,6 +58,8 @@ const CreatePost = ({ visible, onClose = () => { }, callback = () => { } }) => {
         progress: undefined,
         theme: "light",
       });
+      onClose();
+      callback();
     } catch (error) {
       console.error("Error:", error);
       setLoading(false);
@@ -95,12 +97,12 @@ const CreatePost = ({ visible, onClose = () => { }, callback = () => { } }) => {
             placeholder="Enter caption"
             required
           />
-          <div className="mt-4 flex items-center justify-center w-full">
+          <div className="mt-4 flex items-center justify-center w-full ">
             <label
               htmlFor="dropzone-file"
               className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-[#8C8C9A1F]  t rounded-md "
             >
-              <div className="flex flex-col w-full h-full items-center justify-center pt-5 pb-6">
+              <div className="flex flex-col hover:cursor-pointer w-full h-full items-center justify-center pt-5 pb-6">
                 {selectedImage ? (
                   <img
                     src={selectedImage}

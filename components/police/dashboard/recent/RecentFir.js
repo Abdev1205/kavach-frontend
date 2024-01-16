@@ -40,6 +40,7 @@ const RecentFir = () => {
           stage: fir.stages,
           reportedDate: formattedDate,
           reportedDay: day,
+          firid: fir._id
         };
       });
       setFirs(mappedFir);
@@ -51,18 +52,7 @@ const RecentFir = () => {
   useEffect(() => {
     getFir();
   }, [refresh]);
-
-  // const firData = [
-  //   {
-  //     name: "Neha Sharma",
-  //     age: 29,
-  //     report: "Husband beaten him brutually after knowing her extra marital affair. He also need official divorce so she have to leave her house immediately",
-  //     stage: 1,
-  //     reportedDate: "25.12.23",
-  //     reportedDay: "Monday",
-  //   }
-  // ]
-
+  
   return (
     <div className=" w-[100%] flex flex-col h-[41vh] gap-[1rem] text-[#AEB9E1] text-[.9rem] ">
       <div className=" flex justify-between items-center  w-[100%] text-[#6C72FF] pr-[.8rem] mb-[-.5rem]  ">

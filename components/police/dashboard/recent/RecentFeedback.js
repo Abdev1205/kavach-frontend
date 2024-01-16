@@ -3,10 +3,11 @@ import FeedbackDataCard from "../../common/FeedbackDataCard";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { DataLayer } from "@/context/UserDataProvider";
+
 const RecentFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const { refresh } = useContext(DataLayer);
-
+  
   const getFeedback = async () => {
     try {
       const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback`, {
@@ -40,6 +41,7 @@ const RecentFeedback = () => {
           hero: feedback.hero,
           reportedDate: formattedDate,
           reportedDay: day,
+          rating: feedback.rating,
         };
       });
       setFeedbacks(mappedFeedbacks);
@@ -64,25 +66,25 @@ const RecentFeedback = () => {
   // ];
   return (
     <div className=" w-[100%] flex flex-col gap-[1rem] h-60 text-[#AEB9E1] text-[.9rem] ">
-        <div className=" flex justify-between items-center  w-[100%] text-[#6C72FF] pr-[.8rem] mb-[-.5rem]  ">
-          <div className=" w-[10%] flex flex-col justify-between ">
-            <h2>User Details</h2>
-          </div>
-          <div className=" w-[50%] flex justify-center  line-clamp-2 ">
-            Feedback
-          </div>
-          <div
-            className={`  px-[.3rem] py-[.3rem] w-[6rem] h-[2rem] flex justify-center items-center mx-[1rem]  `}
-          >
-            Hero
-          </div>
-          <div className=" w-[5rem] flex flex-col justify-between ">
-            Posted at
-          </div>
-          <div className="  flex justify-center items-center w-[6rem]  ">
-            Reply
-          </div>
+      <div className=" flex justify-between items-center  w-[100%] text-[#6C72FF] pr-[.8rem] mb-[-.5rem]  ">
+        <div className=" w-[10%] flex flex-col justify-between ">
+          <h2>User Details</h2>
         </div>
+        <div className=" w-[50%] flex justify-center  line-clamp-2 ">
+          Feedback
+        </div>
+        <div
+          className={`  px-[.3rem] py-[.3rem] w-[6rem] h-[2rem] flex justify-center items-center mx-[1rem]  `}
+        >
+          Hero
+        </div>
+        <div className=" w-[5rem] flex flex-col justify-between ">
+          Posted at
+        </div>
+        <div className="  flex justify-center items-center w-[6rem]  ">
+          Approval level
+        </div>
+      </div>
       <div className="gap-[1rem] flex flex-col overflow-auto scroll-m-40 overflow-x-hidden overflow-y-auto">
         {feedbacks &&
           feedbacks.map((data, index) => {

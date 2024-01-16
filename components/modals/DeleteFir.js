@@ -1,19 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import DeleteLottieAnimation from '../animation/DeleteLottieAnimation';
+import React, { useContext, useEffect, useState } from "react";
+import DeleteLottieAnimation from "../animation/DeleteLottieAnimation";
+import axios from "axios";
+import { ApiUrl } from "@/utils/BaseUrl";
+import { DataLayer } from "@/context/UserDataProvider";
 
-const DeleteFir = ({ visible, onClose = () => { }, callback = () => { } }) => {
-  const [deletingCard, setDeletingCard] = useState(false)
+const DeleteFir = ({
+  visible,
+  onClose = () => {},
+  callback = () => {},
+  data,
+}) => {
+  const [deletingCard, setDeletingCard] = useState(false);
+  const {setRefresh} = useContext(DataLayer);
   useEffect(() => {
     if (visible) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [visible]);
   if (!visible) return null;
+
+  const deleteFir = async () => {
+    try {
+      await axios.delete(
+        `${ApiUrl}/api/deleteFir/${data.firid}`,
+        { withCredentials: true }
+      );
+      setRefresh((prev) => !prev);
+      onClose();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       id="background"
@@ -22,21 +45,37 @@ const DeleteFir = ({ visible, onClose = () => { }, callback = () => { } }) => {
         if (e.target.id == "background") onClose();
       }}
     >
-      <div className=' flex flex-col items-center w-[22rem]  px-[2rem] py-[2rem] register-fir-bg  ' >
+      <div className=" flex flex-col items-center w-[22rem]  px-[2rem] py-[2rem] register-fir-bg  ">
         <DeleteLottieAnimation />
-        <p className=' font-inter font-[500] text-[.9rem] ' >Are you sure want to delete this Card</p>
-        <div className='  flex flex-col gap-[1rem] w-[100%] mt-[1rem]  ' >
-          <button onClick={(e) => deleteCardById(e)} className={` ${deletingCard ? "animate-pulse" : ""} flex gap-[.8rem] justify-center items-center bg-[#DC2626] py-[.6rem] text-white rounded-md mt-[2rem] `} > {deletingCard ? "Deleting Card" : "Delete card"}
-            <div className={` ${deletingCard ? "" : "hidden"} w-[1rem] h-[1rem] border-t-2  border-white rounded-[50%] animate-spin `} />
+        <p className=" font-inter font-[500] text-[.9rem] ">
+          Are you sure want to delete this Card
+        </p>
+        <div className="  flex flex-col gap-[1rem] w-[100%] mt-[1rem]  ">
+          <button
+            onClick={() => deleteFir()}
+            className={` ${
+              deletingCard ? "animate-pulse" : ""
+            } flex gap-[.8rem] justify-center items-center bg-[#DC2626] py-[.6rem] text-white rounded-md mt-[2rem] `}
+          >
+            {" "}
+            {deletingCard ? "Deleting Fir" : "Delete Fir"}
+            <div
+              className={` ${
+                deletingCard ? "" : "hidden"
+              } w-[1rem] h-[1rem] border-t-2  border-white rounded-[50%] animate-spin `}
+            />
           </button>
           {/* <button className=' rounded-md  px-[1rem] py-[.6rem] bg-[#DC2626] text-white font-inter  ' >Delete</button> */}
-          <button onClick={() => onClose()} className=' rounded-md   py-[.6rem] stage-no-select  ' >Cancel</button>
+          <button
+            onClick={() => onClose()}
+            className=" rounded-md   py-[.6rem] stage-no-select  "
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
+  );
+};
 
-
-  )
-}
-
-export default DeleteFir
+export default DeleteFir;

@@ -6,7 +6,8 @@ import DeleteFir from '@/components/modals/DeleteFir';
 const MainFirDataCard = ({ data }) => {
   const [updateModel, setUpdateModel] = useState(false);
   const [deleteModel, setDeleteModel] = useState(false);
-
+  console.log("MainFrame: ");
+  console.log(data);
 
   return (
     <div className=' flex justify-between items-center gap-[1rem] w-[100%] h-[3.8rem] px-[.8rem] py-[.5rem] border-[1px] border-[#191F35] bg-[#101935] rounded-md  ' >
@@ -36,11 +37,13 @@ const MainFirDataCard = ({ data }) => {
         visible={updateModel}
         onClose={() => setUpdateModel(false)}
         callback={() => fetchRecentFirData()}
+        data={data}
       />
       <DeleteFir
         visible={deleteModel}
         onClose={() => setDeleteModel(false)}
         callback={() => etchRecentFirData()}
+        data={data}
       />
     </div>
   )

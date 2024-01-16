@@ -16,7 +16,7 @@ const FeedbackDataCard = ({ data }) => {
         <h2>{data.reportedDate}</h2>
         <h2>{data.reportedDay}</h2>
       </div>
-      <button className=' reply-bg flex justify-center items-center w-[6rem] h-[2rem]  text-white ' >reply</button>
+      <span className=' reply-bg flex justify-center items-center w-[6rem] h-[2rem]  text-white ' >{data.rating} / 5</span>
     </div>
   )
 }

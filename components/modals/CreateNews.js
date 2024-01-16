@@ -36,10 +36,9 @@ const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
       console.log(selectedImage);
 
       const { data } = await axios.post(
-        `${ApiUrl}/api/newPost`,
+        `${ApiUrl}/api/createNewsChips`,
         {
           content: caption,
-          img: selectedImage,
         },
         {
           withCredentials: true,
@@ -48,7 +47,9 @@ const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
 
       console.log("After Call");
       setCaption("");
-      setRefresh((prev) => !prev);
+      onClose();
+      callback();
+      // setRefresh((prev) => !prev);
       setLoading(false);
       toast.success(data.message, {
         position: "top-center",
@@ -90,7 +91,7 @@ const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
         <form onSubmit={submitHandler} className=' flex flex-col w-[100%] gap-[1rem] text-[#AEB9E180] ' >
           <TextFields value={caption} setValue={setCaption} label="News" placeholder="Enter News" required={true} />
           <TextFields value={city} setValue={setCity} label="City" placeholder="Enter City" required={true} />
-          <div className="mt-4 flex items-center justify-center w-full">
+          {/* <div className="mt-4 flex items-center justify-center w-full">
             <label
               htmlFor="dropzone-file"
               className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-[#8C8C9A1F]  t rounded-md "
@@ -137,7 +138,7 @@ const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
                 onChange={handleFileChange}
               />
             </label>
-          </div>
+          </div> */}
           <button
             type="submit"
             className="bg-[#6C72FF] mt-[1.2rem] text-white rounded-md flex justify-center items-center w-[100%] h-[2.8rem] "
