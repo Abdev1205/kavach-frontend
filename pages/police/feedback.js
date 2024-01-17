@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PoliceLayout from '@/pages/layout/PoliceLayout'
 import Panel from '@/components/common/Leftpanel.js/Panel'
 import SortData from '@/components/common/filter/SortData'
@@ -6,8 +6,102 @@ import { MdOutlineAddCircle } from "react-icons/md";
 import AllFeedback from '@/components/police/feedback/AllFeedback';
 import { BiSearch } from "react-icons/bi";
 import RegisterFirButton from '@/components/police/fir/RegisterFirButton';
+import axios from 'axios';
+import { ApiUrl } from '@/utils/BaseUrl';
+import { DataLayer } from "@/context/UserDataProvider";
 
 const Feedback = () => {
+  const [feedbacks, setFeedbacks] = useState([]);
+  const { refresh } = useContext(DataLayer);
+
+  const getFeedback = async () => {
+    if(sortValue == "Lastest"){
+      try {
+        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback`, {
+          withCredentials: true,
+        });
+        console.log("feedbackData");
+        console.log(feedbackData);
+        const mappedFeedbacks = feedbackData.data.feedbacks.map((feedback) => {
+          const reportDate = new Date(feedback.createdAt);
+          const daysOfWeek = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+          const day = daysOfWeek[reportDate.getDay()];
+          const dayDate = reportDate.getDate();
+          const month = reportDate.getMonth() + 1;
+          const year = reportDate.getFullYear() % 100;
+  
+          // Format the date as "DD.MM.YY"
+          const formattedDate = `${dayDate}.${month}.${year}`;
+  
+          return {
+            name: feedback.userName,
+            age: feedback.userAge,
+            report: feedback.userFeedback,
+            hero: feedback.hero,
+            reportedDate: formattedDate,
+            reportedDay: day,
+            rating: feedback.rating,
+          };
+        });
+        setFeedbacks(mappedFeedbacks);
+      } catch (error) {
+        console.log(error);
+      }
+    }else{
+      try {
+        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedbackOld`, {
+          withCredentials: true,
+        });
+        console.log("feedbackData");
+        console.log(feedbackData);
+        const mappedFeedbacks = feedbackData.data.feedbacks.map((feedback) => {
+          const reportDate = new Date(feedback.createdAt);
+          const daysOfWeek = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+          const day = daysOfWeek[reportDate.getDay()];
+          const dayDate = reportDate.getDate();
+          const month = reportDate.getMonth() + 1;
+          const year = reportDate.getFullYear() % 100;
+  
+          // Format the date as "DD.MM.YY"
+          const formattedDate = `${dayDate}.${month}.${year}`;
+  
+          return {
+            name: feedback.userName,
+            age: feedback.userAge,
+            report: feedback.userFeedback,
+            hero: feedback.hero,
+            reportedDate: formattedDate,
+            reportedDay: day,
+            rating: feedback.rating,
+          };
+        });
+        setFeedbacks(mappedFeedbacks);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getFeedback();
+  }, [refresh]);
+
   const [query, setQuery] = useState('');
   const sortOptionData = [
     {
@@ -44,7 +138,7 @@ const Feedback = () => {
 
             <div className=' w-[100%] mt-[2rem] ' >
               <h2 className=' text-[#6C72FF] text-[1.1rem]  w-[15rem] mb-[.5rem] ' >Recent Feedback </h2>
-              <AllFeedback />
+              <AllFeedback feedbackData={feedbacks} />
             </div>
 
           </div>

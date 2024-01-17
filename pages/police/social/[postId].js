@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import PoliceLayout from '@/pages/layout/PoliceLayout'
 import Panel from '@/components/common/Leftpanel.js/Panel'
 import SortData from '@/components/common/filter/SortData'
@@ -14,9 +14,15 @@ import NewsCard from '@/components/common/socialMedia/NewsCard'
 import TrendingCard from '@/components/common/socialMedia/TrendingCard'
 import { useRouter } from 'next/router'
 import Comment from '@/components/common/socialMedia/Comment'
+import { ApiUrl } from "@/utils/BaseUrl.js";
+import { DataLayer } from "@/context/UserDataProvider.js";
+import axios from 'axios'
 
 const SocialPost = () => {
   const router = useRouter();
+  const [feed, setFeed] = useState([]);
+  const { refresh, setRefresh, loading, setLoading } = useContext(DataLayer);
+  const [postId, setPostId] = useState(router.query.postId)
 
   const sortOptionData = [
     {
@@ -47,103 +53,26 @@ const SocialPost = () => {
       profileImage: TestProfileImage,
       createdAt: "14.01.24"
     },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
-    {
-      name: "Priyanshu Ranjan",
-      comment: "In mulle ko pakad pakad ke maro jo pathar baji karte hai ,desh ke andar rah kar desh ko barbad kar rahe hai yeh sab desh drohi long",
-      profileImage: TestProfileImage,
-      createdAt: "14.01.24"
-    },
   ]
+
+  const fetchPost = async () => {
+    setLoading(true);
+    const response = await axios.get(`${ApiUrl}/api/singlePost/${postId}`)
+    console.log("response news");
+    console.log(response);
+    setFeed(response.data.updatedUserFeed);
+    setLoading(false); 
+  }
+
+  
+  useEffect(() => {
+    fetchPost();
+  }, [refresh])
 
 
   console.log(router.query.postId, "postId");
 
   const [sortValue, setSortValue] = useState(sortOptionData[0].option)
-  const [postId, setPostId] = useState(router.query.postId)
   return (
     <>
       <PoliceLayout>
@@ -173,7 +102,7 @@ const SocialPost = () => {
 
                 <div className='  flex flex-col justify-between gap-[2rem] w-[100%] z-[3] pb-[1rem] ' >
                   {
-                    postData && postData.map((data, index) => {
+                    feed && feed.map((data, index) => {
                       return (
                         <SocialMediaCardPage key={index} data={data} />
                       )
@@ -195,7 +124,7 @@ const SocialPost = () => {
 
                   </div>
                   <div className=' flex w-[100%] flex-col gap-[.8rem] h-[100%] overflow-auto ' >
-                    <Comment data={commentData} />
+                    <Comment postId={postId} />
                   </div>
                 </div>
 

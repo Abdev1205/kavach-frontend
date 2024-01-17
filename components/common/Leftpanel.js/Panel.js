@@ -9,6 +9,7 @@ import { MdMarkUnreadChatAlt } from "react-icons/md";
 import { BsSendFill } from "react-icons/bs";
 import { HiUserGroup } from "react-icons/hi2";
 import { MdCall } from "react-icons/md";
+import { FaCommentSms } from "react-icons/fa6";
 
 const Panel = () => {
 
@@ -52,6 +53,7 @@ const Panel = () => {
           <MultipleLinks name={"FIR reports"} icon={<MdAssignmentAdd />} link={'/police/fir'} id={0} data={firLinkData} />
           <SingleLinks name={"Feedback"} icon={<MdMarkUnreadChatAlt />} href={'/police/feedback'} />
           <MultipleLinks name={"Social"} icon={<BsSendFill />} link={'/police/social'} id={1} data={socialLinkData} />
+          <SingleLinks name={"Bulk Sms"} icon={<FaCommentSms />} href={'/police/sms'} />
           <SingleLinks name={"Our Teams"} icon={<HiUserGroup />} href={'/police/teams'} />
           <SingleLinks name={"Contact Admin"} icon={<MdCall />} href={'/police/contact'} />
         </div>

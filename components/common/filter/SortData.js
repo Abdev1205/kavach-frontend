@@ -1,10 +1,11 @@
-import React from 'react'
-import { useState } from 'react';
+import React,{useState, useContext} from "react";
 import { PiSlidersLight } from "react-icons/pi";
+import { DataLayer } from "@/context/UserDataProvider";
 
 const SortData = ({ sortValue, setSortValue, sortOptionData }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState('default');
+  const [selectedSort, setSelectedSort] = useState('Latest');
+  const { refresh, setRefresh } = useContext(DataLayer);
 
   const handleSortClick = () => {
     setIsOpen(!isOpen);
@@ -12,7 +13,9 @@ const SortData = ({ sortValue, setSortValue, sortOptionData }) => {
 
   const handleOptionClick = (sortOption) => {
     setSortValue(sortOption);
+
     setIsOpen(!isOpen);
+    setRefresh(!refresh);
 
     // You'll likely want to trigger a sorting action here based on the selected option
     console.log('Selected sort option:', sortOption);

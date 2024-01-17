@@ -1,19 +1,14 @@
-import React from "react";
-import { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import PoliceLayout from "../layout/PoliceLayout";
 import Panel from "@/components/common/Leftpanel.js/Panel";
+import SpeechToTextFeedback from "@/components/police/contact/SpeechToText";
+import ContactAdminForm from "@/components/police/contact/ContactAdminForm";
 import SortData from "@/components/common/filter/SortData";
 import Slider from "@/components/common/filter/Slider";
 import { BiSearch } from "react-icons/bi";
-import AllTeam from "@/components/police/team/AllTeam";
-import axios from "axios";
-import { ApiUrl } from "@/utils/BaseUrl";
-import { DataLayer } from "@/context/UserDataProvider";
-// import Layout from './Layout'
+import SMSform from "@/components/police/contact/SMSform";
 
-const Teams = () => {
-  const { setRefresh, refresh } = useContext(DataLayer);
-
+const sms = () => {
   const sortOptionData = [
     {
       id: 1,
@@ -26,38 +21,22 @@ const Teams = () => {
   ];
 
   const [sortValue, setSortValue] = useState(sortOptionData[0].option);
-  const [switchOn, setSwitchOn] = useState(false);
-
-  const setStatus = async () => {
-    try {
-      await axios.post(`${ApiUrl}/api/setStatus`,{
-        status: switchOn
-      },{ withCredentials: true });
-    } catch (error) {
-      console.error('Error setting status:', error);
-    }
-  };
-  useEffect(() => {
-    console.log("Called" + switchOn);
-      setStatus();
-  }, [refresh]);
-
   return (
     <>
       <PoliceLayout>
         <div className=" bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative ">
           <Panel />
-          <div className=" w-[81%] h-[100vh] flex flex-col items-center text-[#AEB9E1] pt-[1rem] px-[1.5rem] ">
+          <div className=" w-[81%] h-[100vh] flex flex-col items-center text-[#AEB9E1] pt-[1rem] px-[1.5rem]   ">
             <div className=" w-[100%] flex  justify-between items-center mt-[1rem] ">
               <SortData
                 sortValue={sortValue}
                 setSortValue={setSortValue}
                 sortOptionData={sortOptionData}
               />
-              <div className=" flex items-center gap-[.5rem] ">
-                <h2 className=" text-[1.12rem] font-nunito ">I am available</h2>
+              {/* <div className=' flex items-center ' >
+                <h2 className=' text-[1.12rem] font-nunito ' >I am avialable</h2>
                 <Slider switchOn={switchOn} setSwitchOn={setSwitchOn} />
-              </div>
+              </div> */}
               <div className=" flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ">
                 <BiSearch className=" text-[1.1rem] " />
                 <input
@@ -66,13 +45,12 @@ const Teams = () => {
                 />
               </div>
             </div>
+            <div className=" w-[100%] h-[60vh] flex justify-center items-center mt-[2rem] ">
+              {/* <h2 className=' text-[#6C72FF] text-[1.1rem]  w-[15rem] mb-[1rem] ' >Active Member </h2> */}
 
-            <div className=" w-[100%] mt-[2rem] ">
-              <h2 className=" text-[#6C72FF] text-[1.1rem]  w-[15rem] mb-[1rem] ">
-                Active Member{" "}
-              </h2>
+              {/* <AllTeam /> */}
 
-              <AllTeam />
+              <SMSform />
             </div>
           </div>
         </div>
@@ -80,4 +58,5 @@ const Teams = () => {
     </>
   );
 };
-export default Teams;
+
+export default sms;
