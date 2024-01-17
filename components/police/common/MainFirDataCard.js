@@ -25,20 +25,12 @@ const MainFirDataCard = ({ data }) => {
         <h2>{data.reportedDate}</h2>
         <h2>{data.reportedDay}</h2>
       </div>
-      <div className=' flex justify-center items-center gap-[.5rem] ' >
-        <button onClick={() => setUpdateModel(true)} className=' text-[#6C72FF] fir-edit-bg px-[.3rem] py-[.3rem]  ' >
-          <MdEdit />
-        </button>
+      <div className=' flex w-[4.2rem] justify-center items-center gap-[.5rem] ' >
+
         <button onClick={() => setDeleteModel(true)} className=' text-[#FD001EA8] fir-delete-bg px-[.25rem] py-[.25rem] ' >
           <MdDeleteForever className=' text-[1.02rem] ' />
         </button>
       </div>
-      <UpdataFir
-        visible={updateModel}
-        onClose={() => setUpdateModel(false)}
-        callback={() => fetchRecentFirData()}
-        data={data}
-      />
       <DeleteFir
         visible={deleteModel}
         onClose={() => setDeleteModel(false)}

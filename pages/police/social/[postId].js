@@ -61,10 +61,10 @@ const SocialPost = () => {
     console.log("response news");
     console.log(response);
     setFeed(response.data.updatedUserFeed);
-    setLoading(false); 
+    setLoading(false);
   }
 
-  
+
   useEffect(() => {
     fetchPost();
   }, [refresh])
@@ -124,7 +124,7 @@ const SocialPost = () => {
 
                   </div>
                   <div className=' flex w-[100%] flex-col gap-[.8rem] h-[100%] overflow-auto ' >
-                    <Comment postId={postId} />
+                    {/* <Comment postId={postId} /> */}
                   </div>
                 </div>
 

@@ -80,16 +80,16 @@ const SocialMediaCard = ({ data }) => {
     }
   };
 
-  const demoCallback = () => {
-    alert("callblack called");
-  };
+  // const demoCallback = () => {
+  //   alert("callblack called");
+  // };
 
   return (
     <div className="  bg-[#101935] border-[2px] border-[#191F35] rounded-md w-[100%] h-[28rem] py-[.6rem] flex flex-col gap-[.5rem] ">
       <SharePost
         visible={shareModel}
         onClose={() => setShareModel(false)}
-        callback={() => demoCallback()}
+        // callback={() => demoCallback()}
         postId={shareId}
       />
       <div className=" flex items-center gap-[.5rem] px-[.5rem] h-[3.7rem]   ">
@@ -99,11 +99,10 @@ const SocialMediaCard = ({ data }) => {
             width={300}
             height={300}
             alt="Profile Picture"
-            className={` ${
-              data.profileImage
+            className={` ${data.profileImage
                 ? " w-[100%] h-[100%] aspect-square translate-y-[.1rem] "
                 : "hidden"
-            } `}
+              } `}
           />
           <FcReddit
             className={` ${data.profileImage ? "hidden" : ""} text-[1.6rem] `}
@@ -167,7 +166,7 @@ const SocialMediaCard = ({ data }) => {
             </div>
           )}
         </div>
-        <button onClick={() => handleShareFeatures(data.id)}>
+        <button onClick={() => handleShareFeatures(data._id)}>
           <LuSend className=" text-[1.4rem] " />
         </button>
         <button>

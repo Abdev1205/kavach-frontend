@@ -56,7 +56,8 @@ import CreatePost from "@/components/modals/CreatePost";
 import CreateNews from "@/components/modals/CreateNews";
 import axios from "axios";
 import UserLayout from "../layout/UserLayout";
-import GPSCall from "@/components/police/fir/GPSCall";
+// import GPSCall from "@/components/police/fir/GPSCall";
+import UserPanel from "@/components/common/Leftpanel.js/UserPanel";
 
 const index = () => {
   const router = useRouter();
@@ -172,7 +173,7 @@ const index = () => {
           callback={() => fetchNewsFeed()}
         />
         <div className=" bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative ">
-          <Panel />
+          <UserPanel />
           <div className=" w-[81%] h-[100vh] flex flex-col items-center text-[#AEB9E1]  pt-[1rem] px-[1.5rem] ">
             <div className=" w-[100%] flex justify-between items-center mt-[1rem] ">
               <SortData
@@ -181,7 +182,7 @@ const index = () => {
                 sortOptionData={sortOptionData}
               />
               <div className=" ml-[-4rem] ">
-                <GPSCall />
+                {/* <GPSCall /> */}
               </div>
               <div className=" mr-7 flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ">
                 <button className="">Assistant Chat</button>

@@ -5,7 +5,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 
 const AnalyticsCard = ({ data }) => {
   return (
-    <div className=' hover:scale-[1.02] duration-300 flex justify-between  cursor-pointer w-[16rem] h-[6rem] bg-[#101935] border-[1px] border-[#191F35] rounded-md px-[.8rem] py-[.8rem] ' >
+    <div className=' hover:scale-[1.02] duration-300 flex flex-shrink-0 gap-[2rem] cursor-pointer w-[16rem] h-[6rem] bg-[#101935] border-[1px] border-[#191F35] rounded-md px-[.8rem] py-[.8rem] ' >
       <div className=' flex flex-col justify-between gap-[.2rem]   px-0 py-0 ' >
         <Image
           src={data.img}

@@ -29,7 +29,7 @@ const index = () => {
   const fethchData = async () => {
     try {
       const firData = await axios.get(`${ApiUrl}/api/totalFirCount`, {}, {});
-      const SolvedCasesData = await axios.get(`${ApiUrl}/api/getSolvedCaseCount`,{},{});
+      const SolvedCasesData = await axios.get(`${ApiUrl}/api/getSolvedCaseCount`, {}, {});
       const FeedbackCount = await axios.get(`${ApiUrl}/api/getFeedbackCount`);
       const crimeData = await axios.get(`${ApiUrl}/api/getCrimeRateCount`, {}, {});
 
@@ -100,15 +100,15 @@ const index = () => {
       <PoliceLayout>
         <div className=" bg-[#080F25] w-[100%] h-[100vh] flex flex-row relative flex-shrink ">
           <Panel />
-          <div className=" w-[81%] h-[100vh] flex flex-col items-center px-[2.5rem] pt-[1rem] text-[#AEB9E1] text-[2rem] ">
-            <div className=" flex justify-between w-[100%]   ">
+          <div className=" w-[100%] h-[81vh] flex  flex-col items-center px-[2.5rem] pt-[1rem] text-[#AEB9E1] text-[2rem] ">
+            <div className=" flex w-[100%] gap-[2rem] ">
               {analyticsData &&
                 analyticsData.map((data, index) => {
                   return <AnalyticsCard key={index} data={data} />;
                 })}
             </div>
-            <div>
-              <div className=" w-[100%] mt-[1rem]  ">
+            <div className=" w-[100%] " >
+              <div className=" w-[100%] overflow-auto mt-[1rem]  ">
                 <h2 className=" text-[#6C72FF] text-[1.1rem]  w-[15rem] ">
                   Recent FIr{" "}
                 </h2>

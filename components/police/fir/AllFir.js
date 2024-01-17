@@ -1,8 +1,8 @@
-import React,{ useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import MainFirDataCard from "../common/MainFirDataCard";
 import { DataLayer } from "@/context/UserDataProvider";
 
-const AllFir = ({firs}) => {
+const AllFir = ({ firs }) => {
   const [firData, setFirData] = useState(firs);
   // const firData = [
   //   {

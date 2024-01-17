@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from 'react';
 import Cookies from 'js-cookie';
 import { DataLayer } from '@/context/UserDataProvider';
 import Login from '../login';
-import UserDashboard from '../user/dashboard';
 import UserLayout from '../layout/UserLayout';
 import { useRouter } from 'next/router';
 import axios from 'axios';
