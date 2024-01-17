@@ -4,6 +4,7 @@ import geoLocation from "../common/socialMedia/geolocation.js";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { DataLayer } from "@/context/UserDataProvider";
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 
 const CallForHelp = ({ visible, onClose = () => {}, callback = () => {}, data }) => {
   const [location, setLocation] = useState({
@@ -15,12 +16,13 @@ const CallForHelp = ({ visible, onClose = () => {}, callback = () => {}, data })
 
   const gpsdata = async () => {
     try {
-      const response = await axios.post(`${ApiUrl}/api/renderMap`, {
-        lat: location.coords.lat,
-        lng: location.coords.lng
+      const response = await axios.post(`${ApiUrl}/api/calcDis`, {
+        userLat: location.coords.lat,
+        userLng: location.coords.lng
       }, {
         withCredentials: true
       });
+      console.log("Response Data: ");
       console.log(response.data);
       setGeojsonData(response.data.distance);
     } catch (error) {
@@ -55,7 +57,21 @@ const CallForHelp = ({ visible, onClose = () => {}, callback = () => {}, data })
       }}
     >
       <div className="flex w-[60rem] h-[45rem] px-[2rem] py-[2rem] register-fir-bg">
-        {/* Your component JSX */}
+      <MapContainer
+        center={[location.coords.lat, location.coords.lng]}  // Set the initial center of the map
+        zoom={13}  // Set the initial zoom level of the map
+        style={{ height: '800px', width: '100%' }}
+        scrollWheelZoom={true}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"  
+        />
+
+        {geojsonData && (
+          <GeoJSON data={geojsonData} />
+        )}
+      </MapContainer>
       </div>
     </div>
   );
