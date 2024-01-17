@@ -56,8 +56,9 @@ import CreatePost from "@/components/modals/CreatePost";
 import CreateNews from "@/components/modals/CreateNews";
 import axios from "axios";
 import UserLayout from "../layout/UserLayout";
-// import GPSCall from "@/components/police/fir/GPSCall";
+import GPSCall from "@/components/police/fir/GPSCall";
 import UserPanel from "@/components/common/Leftpanel.js/UserPanel";
+import dynamic from "next/dynamic";
 
 const index = () => {
   const router = useRouter();
@@ -154,6 +155,13 @@ const index = () => {
   const [createPost, setCreatePost] = useState(false);
   const [createNews, setCreateNews] = useState(false);
 
+  const GPSCall = dynamic(
+    () => {
+      return import("../../components/police/fir/GPSCall");
+    },
+    { ssr: false }
+  );
+
   useEffect(() => {
     getFeed();
     fetchNewsFeed();
@@ -182,7 +190,7 @@ const index = () => {
                 sortOptionData={sortOptionData}
               />
               <div className=" ml-[-4rem] ">
-                {/* <GPSCall /> */}
+                <GPSCall />
               </div>
               <div className=" mr-7 flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ">
                 <button className="">Assistant Chat</button>
@@ -226,10 +234,6 @@ const index = () => {
                     <h2 className=" text-[#6C72FF] text-[1.03rem] ">
                       Trending Around you
                     </h2>
-                    {/* <button className=' active:scale-95 bg-[#6C72FF] text-[.8rem] text-white flex justify-center items-center w-[3.5rem] gap-[.3rem] h-[1.2rem] rounded-sm ' >
-                      <MdAdd />
-                      Add
-                    </button> */}
                   </div>
                   <div className=" flex w-[100%] flex-col gap-[.8rem] h-[32vh] overflow-auto ">
                     {trendingData &&

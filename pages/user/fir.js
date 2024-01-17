@@ -11,8 +11,6 @@ import AllFir from '@/components/police/fir/AllFir'
 import axios from 'axios'
 import { ApiUrl } from '@/utils/BaseUrl'
 
-
-
 const Fir = () => {
   const { refresh } = useContext(DataLayer);
   const [firs, setFirs] = useState([{}]);
@@ -67,6 +65,7 @@ const Fir = () => {
           };
         });
         setFirs(mappedFir);
+        console.log(mappedFir);
       } else {
         console.log("Rendering Old");
         console.log(sortValue);

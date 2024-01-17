@@ -168,7 +168,7 @@ const RegisterFir = ({
           </div>
           <div className=" flex flex-col gap-[.5rem] w-[100%] text-[#AEB9E180]  ">
             <label htmlFor={"accused-report"}>
-              Accused Report <span className={` text-red-600 `}>*</span>
+              In Report <span className={` text-red-600 `}>*</span>
             </label>
             <textarea
               onChange={(e) => setAccusedReport(e.target.value)}
