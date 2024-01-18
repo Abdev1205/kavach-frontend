@@ -4,7 +4,6 @@ import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { MapContainer, TileLayer, GeoJSON, Popup, Marker } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
-import Sentiment from "sentiment";
 
 const CallForHelp = ({ visible, onClose = () => { }, callback = () => { }, data }) => {
   const [location, setLocation] = useState({
@@ -84,18 +83,18 @@ const CallForHelp = ({ visible, onClose = () => { }, callback = () => { }, data 
           />
 
           {/* User Marker */}
-          {locationData.loaded && (
+          {/* {locationData.loaded && (
             <Marker icon={userMarkerIcon} position={[location.coords.lat, location.coords.lng]}>
               <Popup>User Location</Popup>
             </Marker>
-          )}
+          )} */}
 
           {/* Police Marker */}
-          {polLoc && (
+          {/* {polLoc && (
             <Marker icon={userMarkerIcon} position={[polLoc.lat, polLoc.lng]}>
               <Popup>Police Location</Popup>
             </Marker>
-          )}
+          )} */}
 
           {geojsonData && <GeoJSON data={geojsonData} />}
         </MapContainer>

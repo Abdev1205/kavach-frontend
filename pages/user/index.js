@@ -59,6 +59,7 @@ import UserLayout from "../layout/UserLayout";
 import GPSCall from "@/components/police/fir/GPSCall";
 import UserPanel from "@/components/common/Leftpanel.js/UserPanel";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const index = () => {
   const router = useRouter();
@@ -192,9 +193,9 @@ const index = () => {
               <div className=" ml-[-4rem] ">
                 <GPSCall />
               </div>
-              <div className=" mr-7 flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ">
+              <Link href={"/user/assistant"} className=" mr-7 flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ">
                 <button className="">Assistant Chat</button>
-              </div>
+              </Link>
             </div>
 
             <div className=" w-[100%] flex gap-[2rem] mt-[3rem] h-[80vh]  ">

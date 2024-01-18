@@ -11,6 +11,7 @@ const UpdataFir = ({
   onClose = () => {},
   callback = () => {},
   data,
+  firid
 }) => {
   const [accusedName, setAccusedName] = useState();
   const [accusedAge, setAccusedAge] = useState();
@@ -26,6 +27,7 @@ const UpdataFir = ({
   const [disabled, setDisabled] = useState(false);
 
   const { setRefresh } = useContext(DataLayer);
+  console.log("data in update fir",data)
 
   const stageData = [
     {
@@ -47,12 +49,14 @@ const UpdataFir = ({
   ];
   const getFirData = async () => {
     try {
+      console.log("data in update fir",data)
       const response = await axios.get(
-        `${ApiUrl}/api/getSingleFir/${data.firid}`,
+        `${ApiUrl}/api/getSingleFir/${firid}`,
         {
           withCredentials: true,
         }
       );
+      console.log("fir data ",response)
       const fir = response.data.userFir;
       console.log(fir.stages);
       setAccusedName(fir.accusedName);
@@ -62,7 +66,6 @@ const UpdataFir = ({
       setSuspectAge(fir.suspectAge);
       setSuspectName(fir.suspectName);
       setSuspectCity(fir.suspectCity);
-      setDisabled(true);
     } catch (error) {
       console.log(error);
     }
@@ -172,7 +175,7 @@ const UpdataFir = ({
             />
           </div>
           <div className=" flex justify-start gap-[1rem] w-[100%]  ">
-            {stageData &&
+            {/* {stageData &&
               stageData.map((data, index) => {
                 return (
                   <div
@@ -192,7 +195,8 @@ const UpdataFir = ({
                     {data.name}
                   </div>
                 );
-              })}
+              })} */}
+              <StageSelector setStage={setStage} stage={stage} data={stageData} />
           </div>
           <button
             onClick={() => updateFirData()}
