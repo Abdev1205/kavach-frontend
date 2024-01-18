@@ -52,7 +52,7 @@ const Panel = () => {
           <SingleLinks name={"Dashboard"} icon={<GoHomeFill />} href={'/police'} />
           <MultipleLinks name={"FIR reports"} icon={<MdAssignmentAdd />} link={'/police/fir'} id={0} data={firLinkData} />
           <SingleLinks name={"Feedback"} icon={<MdMarkUnreadChatAlt />} href={'/police/feedback'} />
-          <MultipleLinks name={"Social"} icon={<BsSendFill />} link={'/police/social'} id={1} data={socialLinkData} />
+          <SingleLinks name={"Social"} icon={<BsSendFill />} href={'/police/social'} />
           <SingleLinks name={"Bulk Sms"} icon={<FaCommentSms />} href={'/police/sms'} />
           <SingleLinks name={"Our Teams"} icon={<HiUserGroup />} href={'/police/teams'} />
           <SingleLinks name={"Contact Admin"} icon={<MdCall />} href={'/police/contact'} />

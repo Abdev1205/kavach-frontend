@@ -54,7 +54,7 @@ const RecentFir = () => {
   }, [refresh]);
 
   return (
-    <div className=" w-[100%] flex flex-col h-[41vh] gap-[1rem] text-[#AEB9E1] text-[.9rem] ">
+    <div className=" w-[100%] flex flex-col h-[36vh] gap-[1rem] text-[#AEB9E1] text-[.9rem] ">
       <div className=" flex justify-between items-center  w-[100%] text-[#6C72FF] pr-[.8rem] mb-[-.5rem]  ">
         <div className=" w-[10%] flex flex-col justify-between ">
           <h2>Accused Details</h2>

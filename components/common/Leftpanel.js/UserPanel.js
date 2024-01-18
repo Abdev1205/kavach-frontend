@@ -20,7 +20,7 @@ const UserPanel = () => {
           <SingleLinks name={"Dashboard"} icon={<GoHomeFill />} href={'/user'} />
           <SingleLinks name={"File Fir"} icon={<MdAssignmentAdd />} href={'/user/fir'} />
           <SingleLinks name={"Feedback"} icon={<MdMarkUnreadChatAlt />} href={'/user/feedback'} />
-          <SingleLinks name={"Asistant"} icon={<FaCommentSms />} href={'/user/assistant'} />
+          <SingleLinks name={"Assistant"} icon={<FaCommentSms />} href={'/user/assistant'} />
           <SingleLinks name={"Contact Admin"} icon={<MdCall />} href={'/user/contact'} />
         </div>
         <div className='   ' >
