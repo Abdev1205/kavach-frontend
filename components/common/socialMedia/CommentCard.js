@@ -30,8 +30,7 @@ const CommentCard = ({ data }) => {
           height={300}
           alt="Profile Picture"
           className={` ${
-            data.profileImage
-              ? " w-[7.5rem]  aspect-square translate-y-[.4rem] "
+            data.profileImage? " w-[7.5rem]  aspect-square translate-y-[.4rem] "
               : "hidden"
           } `}
         />
