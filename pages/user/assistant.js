@@ -56,7 +56,7 @@ const Assistant = () => {
               chatHistory.map((item, index) => (
                 <div
                   key={`${item.user}-${item.message}-${index}`}
-                  className="bg-second rounded-xl h-26 p-2 my-4"
+                  className="bg-second rounded-xl h-26x p-2 my-4"
                 >
                   <div>{item.user}</div>
                   <div className="  w-full my-2 border-2 border-borderBg" />
