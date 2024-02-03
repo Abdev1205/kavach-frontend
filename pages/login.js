@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { DataLayer } from "@/context/UserDataProvider";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { ApiUrl } from "@/utils/BaseUrl";
 
 const Login = () => {
   const router = useRouter();
@@ -78,7 +79,7 @@ const Login = () => {
     try {
       console.log("before goggle", role);
       // // Redirect to the Google login endpoint on the server
-      window.location.href = `http://localhost:4000/api/auth/google`;
+      window.location.href = `${ApiUrl}/api/auth/google`;
       // setLoginInit(true)
       // const result = await signIn('google', { redirect: '/role' });
       console.log("I am here and i can do something, ", result);
