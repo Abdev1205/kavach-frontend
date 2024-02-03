@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import PoliceLayout from "@/pages/layout/PoliceLayout";
 import Panel from "@/components/common/Leftpanel.js/Panel";
 import SortData from "@/components/common/filter/SortData";
-import { MdOutlineAddCircle } from "react-icons/md";
 import AllFir from "@/components/police/fir/AllFir";
 import { BiSearch } from "react-icons/bi";
 import RegisterFir from "@/components/modals/RegisterFir";
@@ -11,7 +10,7 @@ import { DataLayer } from "@/context/UserDataProvider";
 import { ApiUrl } from "@/utils/BaseUrl";
 import axios from "axios";
 
-const index = () => {
+const Index = () => {
   const { refresh } = useContext(DataLayer);
   const [firs, setFirs] = useState([{}]);
   const sortOptionData = [
@@ -158,4 +157,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

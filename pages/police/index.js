@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PoliceRoleLayer from "../(protectedLayer)/PoliceRoleLayer";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { useContext } from "react";
 import { DataLayer } from "@/context/UserDataProvider";
 import { useRouter } from "next/router";
@@ -18,7 +16,7 @@ import RecentFir from "@/components/police/dashboard/recent/RecentFir";
 import RecentFeedback from "@/components/police/dashboard/recent/RecentFeedback";
 import { ApiUrl } from "@/utils/BaseUrl.js";
 
-const index = () => {
+const Index = () => {
   const { refresh } = useContext(DataLayer);
   const [FirChip, setFirChip] = useState({});
 
@@ -53,7 +51,6 @@ const index = () => {
       console.log(error);
     }
   };
-  const { setIsAuthenticated } = useContext(DataLayer);
   const router = useRouter();
 
   useEffect(() => {
@@ -128,4 +125,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

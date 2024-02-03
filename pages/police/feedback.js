@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import PoliceLayout from '@/pages/layout/PoliceLayout'
 import Panel from '@/components/common/Leftpanel.js/Panel'
 import SortData from '@/components/common/filter/SortData'
-import { MdOutlineAddCircle } from "react-icons/md";
 import AllFeedback from '@/components/police/feedback/AllFeedback';
 import { BiSearch } from "react-icons/bi";
 import RegisterFirButton from '@/components/police/fir/RegisterFirButton';
