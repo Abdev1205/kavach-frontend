@@ -10,7 +10,6 @@ import { useContext } from "react";
 import { DataLayer } from "@/context/UserDataProvider";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
-import { ApiUrl } from "@/utils/BaseUrl";
 
 const Login = () => {
   const router = useRouter();
