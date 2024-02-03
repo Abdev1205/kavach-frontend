@@ -1,17 +1,7 @@
 'use client'
 import React, { useState } from 'react'
-import UserTypeInput from '@/components/userType/roleTypeInput';
-import { FaUserTie } from "react-icons/fa";
-import { GiPoliceOfficerHead } from "react-icons/gi";
-import { RiAdminFill } from "react-icons/ri";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useRouter } from 'next/router';
-import { DataLayer } from '@/context/UserDataProvider';
-import { useContext } from 'react';
-import AuthenticatedLayer from './(protectedLayer)/AuthenticatedLayer';
 import axios from 'axios';
-import { ApiUrl } from '@/utils/BaseUrl';
-import Cookies from 'js-cookie';
 
 const Index = () => {
   const router = useRouter();

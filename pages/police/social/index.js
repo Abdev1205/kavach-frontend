@@ -18,7 +18,7 @@ import CreatePost from "@/components/modals/CreatePost";
 import CreateNews from "@/components/modals/CreateNews";
 import axios from "axios";
 
-const index = () => {
+const Index = () => {
   const router = useRouter();
   const sortOptionData = [
     {
@@ -313,4 +313,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
