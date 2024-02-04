@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import PoliceLayout from "../layout/PoliceLayout";
 import Panel from "@/components/common/Leftpanel.js/Panel";
-import SpeechToTextFeedback from "@/components/police/contact/SpeechToText";
-import ContactAdminForm from "@/components/police/contact/ContactAdminForm";
 import SortData from "@/components/common/filter/SortData";
-import Slider from "@/components/common/filter/Slider";
 import { BiSearch } from "react-icons/bi";
 import SMSform from "@/components/police/contact/SMSform";
 
-const Sms = () => {
+
+const SMS = () => {
   const sortOptionData = [
     {
       id: 1,
@@ -59,4 +57,6 @@ const Sms = () => {
   );
 };
 
-export default Sms;
+
+export default SMS;
+

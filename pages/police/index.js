@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PoliceRoleLayer from "../(protectedLayer)/PoliceRoleLayer";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { useContext } from "react";
 import { DataLayer } from "@/context/UserDataProvider";
 import { useRouter } from "next/router";
@@ -53,7 +51,6 @@ const Index = () => {
       console.log(error);
     }
   };
-  const { setIsAuthenticated } = useContext(DataLayer);
   const router = useRouter();
 
   useEffect(() => {

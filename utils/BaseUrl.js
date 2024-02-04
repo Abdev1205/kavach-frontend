@@ -1,4 +1,5 @@
-const ApiUrl = "http://localhost:4000"
+const ApiUrl = "backend"
+
 export {
   ApiUrl
 }
