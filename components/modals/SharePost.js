@@ -64,7 +64,7 @@ const SharePost = ({ visible, onClose = () => { }, callback = () => { }, postId 
   return (
     <div
       id="background"
-      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={(e) => {
         if (e.target.id == "background") onClose(), callback();
       }}
@@ -79,7 +79,7 @@ const SharePost = ({ visible, onClose = () => { }, callback = () => { }, postId 
           <div className=' flex justify-center items-center  gap-[1rem] mt-[1rem] ' >
             {socialShareData && socialShareData.map((data, index) => {
               return (
-                <Link href={data.href} target='blank' className='  '  >
+                <Link key={index} href={data.href} target='blank' className=''  >
                   <Image
                     src={data.src}
                     width={200}

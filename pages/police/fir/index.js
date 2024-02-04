@@ -11,7 +11,7 @@ import { DataLayer } from "@/context/UserDataProvider";
 import { ApiUrl } from "@/utils/BaseUrl";
 import axios from "axios";
 
-const index = () => {
+const Index = () => {
   const { refresh } = useContext(DataLayer);
   const [firs, setFirs] = useState([{}]);
   const sortOptionData = [
@@ -158,4 +158,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

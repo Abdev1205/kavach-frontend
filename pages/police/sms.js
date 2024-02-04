@@ -8,7 +8,7 @@ import Slider from "@/components/common/filter/Slider";
 import { BiSearch } from "react-icons/bi";
 import SMSform from "@/components/police/contact/SMSform";
 
-const sms = () => {
+const Sms = () => {
   const sortOptionData = [
     {
       id: 1,
@@ -33,7 +33,7 @@ const sms = () => {
                 setSortValue={setSortValue}
                 sortOptionData={sortOptionData}
               />
-              {/* <div className=' flex items-center ' >
+              {/* <div className='flex items-center ' >
                 <h2 className=' text-[1.12rem] font-nunito ' >I am avialable</h2>
                 <Slider switchOn={switchOn} setSwitchOn={setSwitchOn} />
               </div> */}
@@ -59,4 +59,4 @@ const sms = () => {
   );
 };
 
-export default sms;
+export default Sms;

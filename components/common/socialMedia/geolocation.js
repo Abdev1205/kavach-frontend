@@ -1,7 +1,7 @@
 // geoLocation.js
 import { useEffect, useState } from "react";
 
-const geoLocation = (setLocation) => {
+const GeoLocation = (setLocation) => {
   const [locationData, setLocationData] = useState({
     loaded: false,
     coords: { lat: "", lng: "" },
@@ -45,4 +45,4 @@ const geoLocation = (setLocation) => {
   return locationData;
 };
 
-export default geoLocation;
+export default GeoLocation;

@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { ToastContainer, toast } from 'react-toastify';
 
-const user = () => {
+const User = () => {
   // const { data: session } = useSession();
   const { role, setRole, city, setCity, isAuthenticated, setIsAuthenticated, loading, setLoading, setRoleInit } = useContext(DataLayer);
   const [step, setStep] = useState(1)
@@ -128,4 +128,4 @@ const user = () => {
   )
 }
 
-export default user
+export default User

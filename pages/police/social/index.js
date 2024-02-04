@@ -18,7 +18,7 @@ import CreatePost from "@/components/modals/CreatePost";
 import CreateNews from "@/components/modals/CreateNews";
 import axios from "axios";
 
-const index = () => {
+const Index = () => {
   const router = useRouter();
   const sortOptionData = [
     {
@@ -267,7 +267,7 @@ const index = () => {
 
               <div className=" flex flex-col w-[30%] gap-[1rem]   ">
                 <div className=" bg-[#101935] border-[1px] border-[#191F35] px-[1rem] py-[.9rem] w-[100%] h-[38.8vh] rounded-md flex flex-col gap-[.4rem]  ">
-                  <div className=" flex justify-between items-center  ">
+                  <div className="flex items-center justify-between ">
                     <h2 className=" text-[#6C72FF] text-[1.03rem] ">
                       News Around you
                     </h2>
@@ -288,7 +288,7 @@ const index = () => {
                 </div>
 
                 <div className=" bg-[#101935] border-[1px] border-[#191F35] px-[1rem] py-[.9rem] w-[100%] h-[38.8vh] rounded-md flex flex-col gap-[.4rem]  ">
-                  <div className=" flex justify-between items-center  ">
+                  <div className="flex items-center justify-between ">
                     <h2 className=" text-[#6C72FF] text-[1.03rem] ">
                       Trending Around you
                     </h2>
@@ -313,4 +313,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -107,7 +107,7 @@ const Login = () => {
                 <label htmlFor="password" className=' text-[#AEB9E180]  ' >Passowrd <span className='text-red-600 ' >*</span></label>
                 <input onChange={(e) => setPass(e.target.value)} className=' bg-[#8C8C9A1F] text-[#AEB9E180] px-[1rem] py-[.5rem] rounded-md outline-none focus:outline-[#6c71ff5c] ' type="password" id="password" name="password" placeholder="Enter your password " />
               </div>
-              <button className={` active:scale-95 duration-300   ${email && pass ? "opacity-100" : "opacity-25"} bg-[#6C72FF] text-white px-[.5rem] py-[.5rem] rounded-md mt-[1rem] `} >Login</button>
+              <button className={` active:scale-95 duration-300 ${email && pass ? "opacity-100" : "opacity-25"} bg-[#6C72FF] text-white px-[.5rem] py-[.5rem] rounded-md mt-[1rem] `} >Login</button>
 
               <div className=' flex justify-center items-center gap-[.3rem] mt-[1rem] ' >
                 <div className=' w-[40%] h-[1px]  bg-[#6C72FF] ' />

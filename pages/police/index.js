@@ -18,7 +18,7 @@ import RecentFir from "@/components/police/dashboard/recent/RecentFir";
 import RecentFeedback from "@/components/police/dashboard/recent/RecentFeedback";
 import { ApiUrl } from "@/utils/BaseUrl.js";
 
-const index = () => {
+const Index = () => {
   const { refresh } = useContext(DataLayer);
   const [FirChip, setFirChip] = useState({});
 
@@ -128,4 +128,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
