@@ -45,7 +45,9 @@ const User = () => {
         city: city,
       }
       try {
-        const res = await axios.post(`${ApiUrl}/api/role/init`, data);
+        const res = await axios.post(`${ApiUrl}/api/role/init`, data, {
+          withCredentials: true
+        });
         console.log(res)
         if (res.data.user.acknowledged === true) {
           setRoleInit(false);
@@ -60,7 +62,6 @@ const User = () => {
             theme: "light",
           })
           console.log("PostURL: " + ApiUrl);
-
           // setLoginInit(true)
           setIsAuthenticated(true)
           var redirect;
