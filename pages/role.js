@@ -29,6 +29,7 @@ const User = () => {
           const res = await axios.get(`${ApiUrl}/api/user`, {
             withCredentials: true
           })
+          console.log("PostURL: " + ApiUrl);
           console.log(res)
           return res.data.user;
         } catch (error) {
@@ -58,6 +59,8 @@ const User = () => {
             progress: undefined,
             theme: "light",
           })
+          console.log("PostURL: " + ApiUrl);
+
           // setLoginInit(true)
           setIsAuthenticated(true)
           var redirect;
