@@ -36,7 +36,12 @@ const Login = () => {
           email: email,
           password: pass,
         };
-        const res = await axios.post(`${ApiUrl}/api/login`, data);
+        const res = await axios.post(`${ApiUrl}/api/login`, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
         console.log(res);
         Cookies.set("accessToken", res.data.token);
         toast.success("User Looged in Successful", {
@@ -94,9 +99,11 @@ const Login = () => {
     <>
       <div className="bg-[#080F25] w-[100%] h-[100vh] ">
         <IntialUserNavbar />
-        <div className=" w-[1
+        <div
+          className=" w-[1
         
-        00%] h-[90vh] flex justify-center items-center   ">
+        00%] h-[90vh] flex justify-center items-center   "
+        >
           <div className=" flex flex-col w-[30rem]   bg-[#101935] border-[1px] border-[#6c71ff37] rounded-md px-[2.5rem] py-[2.5rem] ">
             <form
               onSubmit={(e) => handleUserLogin(e)}

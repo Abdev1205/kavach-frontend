@@ -27,6 +27,9 @@ const User = () => {
         console.log("get data called in submit data in role.js")
         try {
           const res = await axios.get(`${ApiUrl}/api/user`, {
+            headers: {
+              "Content-Type": "application/json",
+            },
             withCredentials: true
           })
           console.log("PostURL: " + ApiUrl);
