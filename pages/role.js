@@ -44,7 +44,7 @@ const User = () => {
         city: city,
       }
       try {
-        const res = await axios.post(`${ApiUrl}/api/role/init`, data);
+        const res = await axios.post(`kavachbackendservice.azurewebsites.net/api/role/init`, data);
         console.log(res)
         if (res.data.user.acknowledged === true) {
           setRoleInit(false);
