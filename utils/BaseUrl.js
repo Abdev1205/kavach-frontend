@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const yems = "kavachbackendservice.azurewebsites.net";
+export const yems = "https://kavachbackendservice.azurewebsites.net";
 
 const ApiUrl = yems
 
