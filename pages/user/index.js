@@ -1,42 +1,3 @@
-// import React from "react";
-// import PublicRoleLayer from "../(protectedLayer)/PublicRoleLayer";
-// import { useSession, signIn, signOut } from "next-auth/react";
-// import UserDash from "../userDash";
-// import { useContext } from "react";
-// import { DataLayer } from "@/context/UserDataProvider";
-// import UserLayout from "../layout/UserLayout";
-// import { useRouter } from "next/router";
-// import axios from "axios";
-// import { useState } from "react";
-// import Cookies from "js-cookie";
-
-// const index = () => {
-//   const { setIsAuthenticated } = useContext(DataLayer);
-//   const router = useRouter();
-//   const handleLogout = async () => {
-//     console.log("logout clicked");
-//     try {
-//       const reponse = await axios.get("http://localhost:4000/api/logout", {
-//         withCredentials: true,
-//       });
-//       console.log(reponse);
-//       if (reponse.data.success == true) {
-//         console.log("response sucess");
-//         Cookies.remove("accessToken");
-//         router.push("/login");
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   return (
-//     <UserLayout>
-//       <UserDash />
-//     </UserLayout>
-//   );
-// };
-
-// export default index;
 import React, { useContext, useEffect, useState } from "react";
 import { ApiUrl } from "@/utils/BaseUrl.js";
 import { DataLayer } from "@/context/UserDataProvider.js";
@@ -150,7 +111,12 @@ const Index = () => {
   const [createPost, setCreatePost] = useState(false);
   const [createNews, setCreateNews] = useState(false);
 
-
+  const GPSCall = dynamic(
+    () => {
+      return import("../../components/police/fir/GPSCall");
+    },
+    { ssr: false }
+  );
 
   useEffect(() => {
     getFeed();
@@ -180,7 +146,7 @@ const Index = () => {
                 sortOptionData={sortOptionData}
               />
               <div className=" ml-[-4rem] ">
-                {/* <GPSCall /> */}
+                <GPSCall />
               </div>
               <Link href={"/user/assistant"} className=" mr-7 flex justify-between items-center bg-[#101935] h-[2.1rem] rounded-md border-[#191F35] border-[1px] text-[#7E88AE] px-[.8rem] ">
                 <button className="">Assistant Chat</button>

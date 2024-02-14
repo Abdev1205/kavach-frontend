@@ -80,7 +80,10 @@ const SharePost = ({ visible, onClose = () => { }, callback = () => { }, postId 
             {socialShareData && socialShareData.map((data, index) => {
               return (
 
+
                 <Link key={data.href} href={data.href} target='blank' className=''  >
+
+
                   <Image
                     src={data.src}
                     width={200}

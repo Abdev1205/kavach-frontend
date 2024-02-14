@@ -10,11 +10,12 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useRouter } from 'next/router';
 import { ApiUrl } from '@/utils/BaseUrl';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { useSession, signIn, signOut } from "next-auth/react"
+import { ToastContainer, toast } from 'react-toastify';
 
 const User = () => {
   // const { data: session } = useSession();
-  const { role, city, setCity, setIsAuthenticated, setRoleInit } = useContext(DataLayer);
+  const { role, setRole, city, setCity, isAuthenticated, setIsAuthenticated, loading, setLoading, setRoleInit } = useContext(DataLayer);
   const [step, setStep] = useState(1)
   const [userType, setUserType] = useState("");
   const router = useRouter();

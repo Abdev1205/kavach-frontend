@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import UserLayout from "../layout/UserLayout";
 import UserPanel from "@/components/common/Leftpanel.js/UserPanel";
@@ -165,6 +164,5 @@ const Feedback = () => {
     </>
   );
 };
-
 
 export default Feedback;

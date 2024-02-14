@@ -4,7 +4,7 @@ import Panel from "@/components/common/Leftpanel.js/Panel";
 import ComplaintForm from "@/components/user/Social/ComplaintForm";
 const Complaint = () => {
   return (
-    <div className="bg-primary flex">
+    <div className="flex bg-primary">
       <Panel />
       <ComplaintForm />
       <div className="flex">
