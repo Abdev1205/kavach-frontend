@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import UserTypeInput from '@/components/userType/roleTypeInput';
 import { FaUserTie } from "react-icons/fa";
 import { GiPoliceOfficerHead } from "react-icons/gi";
@@ -16,6 +16,10 @@ import Cookies from 'js-cookie';
 const Index = () => {
   const router = useRouter();
   const [user, setUser] = useState({})
+
+  useEffect(() => {
+    router.push('/login')
+  }, [])
 
   const getData = async () => {
     try {
