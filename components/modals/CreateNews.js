@@ -6,6 +6,7 @@ import { DataLayer } from '@/context/UserDataProvider';
 import axios from "axios";
 import { ApiUrl } from '@/utils/BaseUrl';
 import TextFields from '../common/InputFields/TextFields';
+import Cookies from 'js-cookie';
 
 const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
   const [deletingCard, setDeletingCard] = useState(false)
@@ -34,9 +35,9 @@ const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
     try {
       console.log("Calling");
       console.log(selectedImage);
-
+      const token = Cookies.get('accessToken');
       const { data } = await axios.post(
-        `${ApiUrl}/api/createNewsChips`,
+        `${ApiUrl}/api/createNewsChips?token=${token}`,
         {
           content: caption,
         },
@@ -82,7 +83,7 @@ const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
   return (
     <div
       id="background"
-      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={(e) => {
         if (e.target.id == "background") onClose();
       }}
@@ -91,17 +92,17 @@ const CreateNews = ({ visible, onClose = () => { }, callback = () => { } }) => {
         <form onSubmit={submitHandler} className=' flex flex-col w-[100%] gap-[1rem] text-[#AEB9E180] ' >
           <TextFields value={caption} setValue={setCaption} label="News" placeholder="Enter News" required={true} />
           <TextFields value={city} setValue={setCity} label="City" placeholder="Enter City" required={true} />
-          {/* <div className="mt-4 flex items-center justify-center w-full">
+          {/* <div className="flex items-center justify-center w-full mt-4">
             <label
               htmlFor="dropzone-file"
               className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-[#8C8C9A1F]  t rounded-md "
             >
-              <div className="flex flex-col w-full h-full items-center justify-center pt-5 pb-6">
+              <div className="flex flex-col items-center justify-center w-full h-full pt-5 pb-6">
                 {selectedImage ? (
                   <img
                     src={selectedImage}
                     alt="Selected"
-                    className="w-full h-full object-cover mb-4"
+                    className="object-cover w-full h-full mb-4"
                   />
                 ) : (
                   <div className="flex flex-col items-center">

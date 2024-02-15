@@ -9,15 +9,17 @@ import RegisterFirButton from '@/components/police/fir/RegisterFirButton';
 import axios from 'axios';
 import { ApiUrl } from '@/utils/BaseUrl';
 import { DataLayer } from "@/context/UserDataProvider";
+import Cookies from 'js-cookie';
 
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const { refresh } = useContext(DataLayer);
 
   const getFeedback = async () => {
-    if(sortValue == "Lastest"){
+    if (sortValue == "Lastest") {
       try {
-        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback`, {
+        const token = Cookies.get('accessToken');
+        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback?token=${token}`, {
           withCredentials: true,
         });
         console.log("feedbackData");
@@ -37,10 +39,10 @@ const Feedback = () => {
           const dayDate = reportDate.getDate();
           const month = reportDate.getMonth() + 1;
           const year = reportDate.getFullYear() % 100;
-  
+
           // Format the date as "DD.MM.YY"
           const formattedDate = `${dayDate}.${month}.${year}`;
-  
+
           return {
             name: feedback.userName,
             age: feedback.userAge,
@@ -55,7 +57,7 @@ const Feedback = () => {
       } catch (error) {
         console.log(error);
       }
-    }else{
+    } else {
       try {
         const feedbackData = await axios.get(`${ApiUrl}/api/getFeedbackOld`, {
           withCredentials: true,
@@ -77,10 +79,10 @@ const Feedback = () => {
           const dayDate = reportDate.getDate();
           const month = reportDate.getMonth() + 1;
           const year = reportDate.getFullYear() % 100;
-  
+
           // Format the date as "DD.MM.YY"
           const formattedDate = `${dayDate}.${month}.${year}`;
-  
+
           return {
             name: feedback.userName,
             age: feedback.userAge,

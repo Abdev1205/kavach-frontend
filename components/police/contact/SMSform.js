@@ -3,11 +3,13 @@ import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { Toast } from "react-toastify";
 import { DataLayer } from "@/context/UserDataProvider";
+import Cookies from 'js-cookie';
 const SMSform = () => {
   const [message, setMessage] = useState("");
   const handleSendMessage = async () => {
     try {
-      const response = await axios.post(`${ApiUrl}/api/getMessageToSend`, { message }, {withCredentials:true});
+      const token = Cookies.get('accessToken');
+      const response = await axios.post(`${ApiUrl}/api/getMessageToSend?token=${token}`, { message }, { withCredentials: true });
       console.log(response.data);
       Toast.success(response.data.message);
     } catch (error) {

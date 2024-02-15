@@ -3,15 +3,16 @@ import DeleteLottieAnimation from "../animation/DeleteLottieAnimation";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { DataLayer } from "@/context/UserDataProvider";
+import Cookies from 'js-cookie';
 
 const DeleteFir = ({
   visible,
-  onClose = () => {},
-  callback = () => {},
+  onClose = () => { },
+  callback = () => { },
   data,
 }) => {
   const [deletingCard, setDeletingCard] = useState(false);
-  const {setRefresh} = useContext(DataLayer);
+  const { setRefresh } = useContext(DataLayer);
   useEffect(() => {
     if (visible) {
       document.body.style.overflow = "hidden";
@@ -26,8 +27,9 @@ const DeleteFir = ({
 
   const deleteFir = async () => {
     try {
+      const token = Cookies.get('accessToken');
       await axios.delete(
-        `${ApiUrl}/api/deleteFir/${data.firid}`,
+        `${ApiUrl}/api/deleteFir/${data.firid}?token=${token}`,
         { withCredentials: true }
       );
       setRefresh((prev) => !prev);
@@ -40,7 +42,7 @@ const DeleteFir = ({
   return (
     <div
       id="background"
-      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={(e) => {
         if (e.target.id == "background") onClose();
       }}
@@ -53,16 +55,14 @@ const DeleteFir = ({
         <div className="  flex flex-col gap-[1rem] w-[100%] mt-[1rem]  ">
           <button
             onClick={() => deleteFir()}
-            className={` ${
-              deletingCard ? "animate-pulse" : ""
-            } flex gap-[.8rem] justify-center items-center bg-[#DC2626] py-[.6rem] text-white rounded-md mt-[2rem] `}
+            className={` ${deletingCard ? "animate-pulse" : ""
+              } flex gap-[.8rem] justify-center items-center bg-[#DC2626] py-[.6rem] text-white rounded-md mt-[2rem] `}
           >
             {" "}
             {deletingCard ? "Deleting Fir" : "Delete Fir"}
             <div
-              className={` ${
-                deletingCard ? "" : "hidden"
-              } w-[1rem] h-[1rem] border-t-2  border-white rounded-[50%] animate-spin `}
+              className={` ${deletingCard ? "" : "hidden"
+                } w-[1rem] h-[1rem] border-t-2  border-white rounded-[50%] animate-spin `}
             />
           </button>
           {/* <button className=' rounded-md  px-[1rem] py-[.6rem] bg-[#DC2626] text-white font-inter  ' >Delete</button> */}

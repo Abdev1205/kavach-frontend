@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ApiUrl } from "@/utils/BaseUrl.js";
 import { FaPlus } from "react-icons/fa6";
+import Cookies from 'js-cookie';
 
 const Comments = ({ postId }) => {
   const [commentText, setCommentText] = useState('');
@@ -9,8 +10,9 @@ const Comments = ({ postId }) => {
 
   const handleAddComment = async () => {
     try {
+      const token = Cookies.get('accessToken');
       // Add the comment to the server
-      const response = await axios.post(`${ApiUrl}/api/addComment`, {
+      const response = await axios.post(`${ApiUrl}/api/addComment?token=${token}`, {
         postId: postId,
         comment: commentText,
       }, {
@@ -31,7 +33,8 @@ const Comments = ({ postId }) => {
     // Fetch comments for the post when the component mounts
     const fetchComments = async () => {
       try {
-        const {data} = await axios.get(`${ApiUrl}/api/postComments?postId=${postId}`,{withCredentials: true});
+        const token = Cookies.get('accessToken');
+        const { data } = await axios.get(`${ApiUrl}/api/postComments?postId=${postId}&?token=${token}`, { withCredentials: true });
         console.log("COmments: ");
         setComments(data.result);
       } catch (error) {
@@ -44,23 +47,23 @@ const Comments = ({ postId }) => {
 
   return (
     <div className="flex flex-col text-xl">
-      
+
       <div className="flex items-center justify-between p-2">
         {/* Add comment input */}
         <textarea
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
           type="textarea"
-          className=" resize-none text-lg px-4 w-full mr-2 py-2 placeholder:text-fontCol rounded-md bg-second min-h-14 max-h-14"
+          className="w-full px-4 py-2 mr-2 text-lg rounded-md resize-none  placeholder:text-fontCol bg-second min-h-14 max-h-14"
           placeholder="Enter Comment"
           required
         />
         {/* Add comment button */}
         <button
           onClick={handleAddComment}
-          className="bg-btn text-fontCol2 p-2 rounded-md hover:bg-btn/70"
+          className="p-2 rounded-md bg-btn text-fontCol2 hover:bg-btn/70"
         >
-        <FaPlus className=" w-9 h-9" />
+          <FaPlus className=" w-9 h-9" />
         </button>
       </div>
       <div className="overflow-auto">

@@ -17,6 +17,7 @@ import {
 import RecentFir from "@/components/police/dashboard/recent/RecentFir";
 import RecentFeedback from "@/components/police/dashboard/recent/RecentFeedback";
 import { ApiUrl } from "@/utils/BaseUrl.js";
+import Cookies from 'js-cookie';
 
 const Index = () => {
   const { refresh } = useContext(DataLayer);
@@ -28,7 +29,8 @@ const Index = () => {
 
   const fethchData = async () => {
     try {
-      const firData = await axios.get(`${ApiUrl}/api/totalFirCount`, {}, {});
+      const token = Cookies.get('accessToken');
+      const firData = await axios.get(`${ApiUrl}/api/totalFirCount?token=${token}`, {}, {});
       const SolvedCasesData = await axios.get(`${ApiUrl}/api/getSolvedCaseCount`, {}, {});
       const FeedbackCount = await axios.get(`${ApiUrl}/api/getFeedbackCount`);
       const crimeData = await axios.get(`${ApiUrl}/api/getCrimeRateCount`, {}, {});

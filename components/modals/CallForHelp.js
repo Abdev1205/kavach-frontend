@@ -4,6 +4,7 @@ import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { MapContainer, TileLayer, GeoJSON, Popup, Marker } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
+import Cookies from 'js-cookie';
 
 const CallForHelp = ({ visible, onClose = () => { }, callback = () => { }, data }) => {
   const [location, setLocation] = useState({
@@ -17,8 +18,9 @@ const CallForHelp = ({ visible, onClose = () => { }, callback = () => { }, data 
 
   const gpsdata = async () => {
     try {
+      const token = Cookies.get('accessToken');
       const response = await axios.post(
-        `${ApiUrl}/api/calcDis`,
+        `${ApiUrl}/api/calcDis?token=${token}`,
         {
           userLat: location.coords.lat,
           userLng: location.coords.lng,
@@ -65,7 +67,7 @@ const CallForHelp = ({ visible, onClose = () => { }, callback = () => { }, data 
   return (
     <div
       id="background"
-      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={(e) => {
         if (e.target.id === "background") onClose();
       }}

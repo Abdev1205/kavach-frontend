@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { ApiUrl } from "@/utils/BaseUrl.js";
 import { DataLayer } from "../context/UserDataProvider.js";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const ImageUploader = () => {
   const router = useRouter();
@@ -18,9 +19,9 @@ const ImageUploader = () => {
     try {
       console.log("Calling");
       console.log(selectedImage);
-
+      const token = Cookies.get('accessToken');
       const { data } = await axios.post(
-        `${ApiUrl}/api/newPost`,
+        `${ApiUrl}/api/newPost?token=${token}`,
         {
           content: caption,
           img: selectedImage,
@@ -69,21 +70,21 @@ const ImageUploader = () => {
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
           type="textarea"
-          className=" resize-none text-lg px-4 w-full py-2 placeholder:text-fontCol rounded-md bg-second min-h-32 max-h-32"
+          className="w-full px-4 py-2 text-lg rounded-md resize-none  placeholder:text-fontCol bg-second min-h-32 max-h-32"
           placeholder="Enter caption"
           required
         />
-        <div className="mt-4 flex items-center justify-center w-full">
+        <div className="flex items-center justify-center w-full mt-4">
           <label
             htmlFor="dropzone-file"
             className="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
           >
-            <div className="flex flex-col w-full h-full items-center justify-center pt-5 pb-6">
+            <div className="flex flex-col items-center justify-center w-full h-full pt-5 pb-6">
               {selectedImage ? (
                 <img
                   src={selectedImage}
                   alt="Selected"
-                  className="w-full h-full object-cover mb-4"
+                  className="object-cover w-full h-full mb-4"
                 />
               ) : (
                 <div className="flex flex-col items-center">
@@ -123,7 +124,7 @@ const ImageUploader = () => {
         </div>
         <button
           type="submit"
-          className="bg-btn text-white/70 rounded-lg text-2xl w-full h-14 my-4"
+          className="w-full my-4 text-2xl rounded-lg bg-btn text-white/70 h-14"
         >
           Create Post
         </button>

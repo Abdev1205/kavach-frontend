@@ -4,11 +4,12 @@ import StageSelector from "../common/InputFields/StageSelector";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { DataLayer } from "@/context/UserDataProvider";
+import Cookies from 'js-cookie';
 
 const RegisterFir = ({
   visible,
-  onClose = () => {},
-  callback = () => {},
+  onClose = () => { },
+  callback = () => { },
   data,
 }) => {
   const { setRefresh } = useContext(DataLayer);
@@ -40,8 +41,9 @@ const RegisterFir = ({
   ];
   const makeFeedback = async () => {
     try {
+      const token = Cookies.get('accessToken');
       await axios.post(
-        `${ApiUrl}/api/createFeedback`,
+        `${ApiUrl}/api/createFeedback?token=${token}`,
         {
           userName,
           userAge,
@@ -74,7 +76,7 @@ const RegisterFir = ({
   return (
     <div
       id="background"
-      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={(e) => {
         if (e.target.id == "background") onClose();
       }}

@@ -9,6 +9,7 @@ import RegisterFirButton from "@/components/police/fir/RegisterFirButton";
 import { DataLayer } from "@/context/UserDataProvider";
 import { ApiUrl } from "@/utils/BaseUrl";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const Complaint = () => {
   const { refresh } = useContext(DataLayer);
@@ -26,10 +27,11 @@ const Complaint = () => {
 
   const complaintData = async () => {
     try {
+      const token = Cookies.get('accessToken');
       if (sortValue == "Latest") {
         console.log("Rendering New");
         console.log(sortValue);
-        const firData = await axios.get(`${ApiUrl}/api/getComplaint`, {
+        const firData = await axios.get(`${ApiUrl}/api/getComplaint?token=${token}`, {
           withCredentials: true,
         });
         console.log("firData");

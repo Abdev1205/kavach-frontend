@@ -17,6 +17,7 @@ import Comment from '@/components/common/socialMedia/Comment'
 import { ApiUrl } from "@/utils/BaseUrl.js";
 import { DataLayer } from "@/context/UserDataProvider.js";
 import axios from 'axios'
+import Cookies from 'js-cookie';
 
 const SocialPost = () => {
   const router = useRouter();
@@ -57,7 +58,8 @@ const SocialPost = () => {
 
   const fetchPost = async () => {
     setLoading(true);
-    const response = await axios.get(`${ApiUrl}/api/singlePost/${postId}`)
+    const token = Cookies.get('accessToken');
+    const response = await axios.get(`${ApiUrl}/api/singlePost/${postId}?token=${token}`)
     console.log("response news");
     console.log(response);
     setFeed(response.data.updatedUserFeed);

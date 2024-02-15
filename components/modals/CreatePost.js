@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { DataLayer } from '@/context/UserDataProvider';
 import axios from "axios";
 import { ApiUrl } from '@/utils/BaseUrl';
+import Cookies from 'js-cookie';
 
 
 const CreatePost = ({ visible, onClose = () => { }, callback = () => { } }) => {
@@ -32,9 +33,9 @@ const CreatePost = ({ visible, onClose = () => { }, callback = () => { } }) => {
     try {
       console.log("Calling");
       console.log(selectedImage);
-
+      const token = Cookies.get('accessToken');
       const { data } = await axios.post(
-        `${ApiUrl}/api/newPost`,
+        `${ApiUrl}/api/newPost?token=${token}`,
         {
           content: caption,
           img: selectedImage,
@@ -81,7 +82,7 @@ const CreatePost = ({ visible, onClose = () => { }, callback = () => { } }) => {
   return (
     <div
       id="background"
-      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={(e) => {
         if (e.target.id == "background") onClose();
       }}
@@ -97,17 +98,17 @@ const CreatePost = ({ visible, onClose = () => { }, callback = () => { } }) => {
             placeholder="Enter caption"
             required
           />
-          <div className="mt-4 flex items-center justify-center w-full ">
+          <div className="flex items-center justify-center w-full mt-4 ">
             <label
               htmlFor="dropzone-file"
               className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-[#8C8C9A1F]  t rounded-md "
             >
-              <div className="flex flex-col hover:cursor-pointer w-full h-full items-center justify-center pt-5 pb-6">
+              <div className="flex flex-col items-center justify-center w-full h-full pt-5 pb-6 hover:cursor-pointer">
                 {selectedImage ? (
                   <img
                     src={selectedImage}
                     alt="Selected"
-                    className="w-full h-full object-cover mb-4"
+                    className="object-cover w-full h-full mb-4"
                   />
                 ) : (
                   <div className="flex flex-col items-center">

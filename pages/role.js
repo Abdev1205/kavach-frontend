@@ -10,8 +10,8 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useRouter } from 'next/router';
 import { ApiUrl } from '@/utils/BaseUrl';
 import axios from 'axios';
-import { useSession, signIn, signOut } from "next-auth/react"
 import { ToastContainer, toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 const User = () => {
   // const { data: session } = useSession();
@@ -27,7 +27,8 @@ const User = () => {
       const getData = async () => {
         console.log("get data called in submit data in role.js")
         try {
-          const res = await axios.get(`${ApiUrl}/api/user`, {
+          const token = Cookies.get('accessToken');
+          const res = await axios.get(`${ApiUrl}/api/user?token=${token}`, {
             withCredentials: true
           })
           console.log(res)
@@ -45,7 +46,8 @@ const User = () => {
         city: city,
       }
       try {
-        const res = await axios.post(`${ApiUrl}/api/role/init`, data);
+        const token = Cookies.get('accessToken');
+        const res = await axios.post(`${ApiUrl}/api/role/init?token=${token}`, data);
         console.log(res)
         if (res.data.user.acknowledged === true) {
           setRoleInit(false);

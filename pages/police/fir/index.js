@@ -10,6 +10,7 @@ import RegisterFirButton from "@/components/police/fir/RegisterFirButton";
 import { DataLayer } from "@/context/UserDataProvider";
 import { ApiUrl } from "@/utils/BaseUrl";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const Index = () => {
   const { refresh } = useContext(DataLayer);
@@ -27,10 +28,11 @@ const Index = () => {
 
   const getFir = async () => {
     try {
+      const token = Cookies.get('accessToken');
       if (sortValue == "Latest") {
         console.log("Rendering New");
         console.log(sortValue);
-        const firData = await axios.get(`${ApiUrl}/api/getFir`, {
+        const firData = await axios.get(`${ApiUrl}/api/getFir?token=${token}`, {
           withCredentials: true,
         });
         console.log("firData");
@@ -66,9 +68,10 @@ const Index = () => {
         });
         setFirs(mappedFir);
       } else {
+        const token = Cookies.get('accessToken');
         console.log("Rendering Old");
         console.log(sortValue);
-        const firData = await axios.get(`${ApiUrl}/api/getFIROld`, {
+        const firData = await axios.get(`${ApiUrl}/api/getFIROld?token=${token}`, {
           withCredentials: true,
         });
         console.log("firData");

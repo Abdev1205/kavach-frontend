@@ -3,14 +3,16 @@ import FeedbackDataCard from "../../common/FeedbackDataCard";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { DataLayer } from "@/context/UserDataProvider";
+import Cookies from 'js-cookie';
 
 const RecentFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const { refresh } = useContext(DataLayer);
-  
+
   const getFeedback = async () => {
     try {
-      const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback`, {
+      const token = Cookies.get('accessToken');
+      const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback?token=${token}`, {
         withCredentials: true,
       });
       console.log("feedbackData");

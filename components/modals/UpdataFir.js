@@ -1,15 +1,16 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import TextFields from "../common/InputFields/TextFields";
 import { useState, useEffect } from "react";
 import StageSelector from "../common/InputFields/StageSelector";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { DataLayer } from "@/context/UserDataProvider";
+import Cookies from 'js-cookie';
 
 const UpdataFir = ({
   visible,
-  onClose = () => {},
-  callback = () => {},
+  onClose = () => { },
+  callback = () => { },
   data,
   firid
 }) => {
@@ -27,7 +28,7 @@ const UpdataFir = ({
   const [disabled, setDisabled] = useState(false);
 
   const { setRefresh } = useContext(DataLayer);
-  console.log("data in update fir",data)
+  console.log("data in update fir", data)
 
   const stageData = [
     {
@@ -49,14 +50,15 @@ const UpdataFir = ({
   ];
   const getFirData = async () => {
     try {
-      console.log("data in update fir",data)
+      console.log("data in update fir", data)
+      const token = Cookies.get('accessToken');
       const response = await axios.get(
-        `${ApiUrl}/api/getSingleFir/${firid}`,
+        `${ApiUrl}/api/getSingleFir/${firid}?token=${token}`,
         {
           withCredentials: true,
         }
       );
-      console.log("fir data ",response)
+      console.log("fir data ", response)
       const fir = response.data.userFir;
       console.log(fir.stages);
       setAccusedName(fir.accusedName);
@@ -73,13 +75,14 @@ const UpdataFir = ({
 
   const updateFirData = async () => {
     try {
+      const token = Cookies.get('accessToken');
       await axios.put(
-        `${ApiUrl}/api/upInvStg/${data.firid}/${stageData[stage - 1].name}`,{},
+        `${ApiUrl}/api/upInvStg/${data.firid}/${stageData[stage - 1].name}?token=${token}`, {},
         { withCredentials: true }
       );
       setRefresh((prev) => !prev);
       onClose();
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +103,7 @@ const UpdataFir = ({
   return (
     <div
       id="background"
-      className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={(e) => {
         if (e.target.id == "background") onClose();
       }}
@@ -196,7 +199,7 @@ const UpdataFir = ({
                   </div>
                 );
               })} */}
-              <StageSelector setStage={setStage} stage={stage} data={stageData} />
+            <StageSelector setStage={setStage} stage={stage} data={stageData} />
           </div>
           <button
             onClick={() => updateFirData()}

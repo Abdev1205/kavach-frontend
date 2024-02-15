@@ -132,7 +132,7 @@ const UserDataProvider = ({ children }) => {
     };
   }, [loading]);
   return (
-    <DataLayer.Provider value={{setRefresh,refresh, isAuthenticated, setIsAuthenticated, loading, setLoading, user, setUser, role, setRole, roleInit, setRoleInit, city, setCity, loginInit, setLoginInit }} >
+    <DataLayer.Provider value={{ setRefresh, refresh, isAuthenticated, setIsAuthenticated, loading, setLoading, user, setUser, role, setRole, roleInit, setRoleInit, city, setCity, loginInit, setLoginInit }} >
       <LoadingAnimation />
       {children}
     </DataLayer.Provider>

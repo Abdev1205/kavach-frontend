@@ -11,6 +11,7 @@ import { GoHomeFill } from "react-icons/go";
 import { MdInsertDriveFile, MdPeopleAlt } from "react-icons/md";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
+import Cookies from 'js-cookie';
 
 const Sidebar = ({ User = "User" }) => {
   const { isAuthenticated, setIsAuthenticated, loading, setLoading } =

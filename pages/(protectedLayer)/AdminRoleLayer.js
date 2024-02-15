@@ -14,7 +14,8 @@ const AdminRoleLayer = ({ children }) => {
 
   const getData = async () => {
     try {
-      const res = await axios.get(`${ApiUrl}/api/user`, {
+      const token = Cookies.get('accessToken');
+      const res = await axios.get(`${ApiUrl}/api/user?token=${token}`, {
         withCredentials: true
       });
       console.log(res.data.user);

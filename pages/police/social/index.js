@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import CreatePost from "@/components/modals/CreatePost";
 import CreateNews from "@/components/modals/CreateNews";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const Index = () => {
   const router = useRouter();
@@ -178,7 +179,8 @@ const Index = () => {
 
   const getFeed = async () => {
     setLoading(true);
-    const response = await axios.get(`${ApiUrl}/api/fetchFeed`, {
+    const token = Cookies.get('accessToken');
+    const response = await axios.get(`${ApiUrl}/api/fetchFeed?token=${token}`, {
       withCredentials: true,
     });
     console.log("response");

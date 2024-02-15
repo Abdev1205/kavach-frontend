@@ -10,6 +10,7 @@ import { DataLayer } from '@/context/UserDataProvider'
 import AllFir from '@/components/police/fir/AllFir'
 import axios from 'axios'
 import { ApiUrl } from '@/utils/BaseUrl'
+import Cookies from 'js-cookie';
 
 const Fir = () => {
   const { refresh } = useContext(DataLayer);
@@ -30,7 +31,8 @@ const Fir = () => {
       if (sortValue == "Latest") {
         console.log("Rendering New");
         console.log(sortValue);
-        const firData = await axios.get(`${ApiUrl}/api/getUserFIR`, {
+        const token = Cookies.get('accessToken');
+        const firData = await axios.get(`${ApiUrl}/api/getUserFIR?token=${token}`, {
           withCredentials: true,
         });
         console.log("firData");
@@ -69,7 +71,8 @@ const Fir = () => {
       } else {
         console.log("Rendering Old");
         console.log(sortValue);
-        const firData = await axios.get(`${ApiUrl}/api/getUserFIROld`, {
+        const token = Cookies.get('accessToken');
+        const firData = await axios.get(`${ApiUrl}/api/getUserFIROld?token=${token}`, {
           withCredentials: true,
         });
         console.log("firData");

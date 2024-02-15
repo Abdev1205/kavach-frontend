@@ -3,6 +3,7 @@ import FirDataCard from "../../common/FirDataCard";
 import axios from "axios";
 import { ApiUrl } from "@/utils/BaseUrl";
 import { DataLayer } from "@/context/UserDataProvider";
+import Cookies from 'js-cookie';
 
 const RecentFir = () => {
   const [firs, setFirs] = useState([]);
@@ -10,7 +11,8 @@ const RecentFir = () => {
 
   const getFir = async () => {
     try {
-      const firData = await axios.get(`${ApiUrl}/api/getFir`, {
+      const token = Cookies.get('accessToken');
+      const firData = await axios.get(`${ApiUrl}/api/getFir?token=${token}`, {
         withCredentials: true,
       });
       console.log("firData");

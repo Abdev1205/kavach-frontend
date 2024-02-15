@@ -15,6 +15,7 @@ import UserLayout from "../layout/UserLayout";
 import UserPanel from "@/components/common/Leftpanel.js/UserPanel";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import Cookies from 'js-cookie';
 
 const Index = () => {
   const router = useRouter();
@@ -80,7 +81,8 @@ const Index = () => {
 
   const getFeed = async () => {
     setLoading(true);
-    const response = await axios.get(`${ApiUrl}/api/fetchFeed`, {
+    const token = Cookies.get('accessToken');
+    const response = await axios.get(`${ApiUrl}/api/fetchFeed?token=${token}`, {
       withCredentials: true,
     });
     console.log("response");
@@ -98,7 +100,8 @@ const Index = () => {
 
   const fetchNewsFeed = async () => {
     setLoading(true);
-    const response = await axios.get(`${ApiUrl}/api/fetchNewsChips`, {
+    const token = Cookies.get('accessToken');
+    const response = await axios.get(`${ApiUrl}/api/fetchNewsChips?token=${token}`, {
       withCredentials: true,
     });
     console.log("response news");

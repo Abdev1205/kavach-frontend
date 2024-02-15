@@ -11,6 +11,8 @@ import { DataLayer } from "@/context/UserDataProvider";
 import AllFeedback from "@/components/police/feedback/AllFeedback";
 import CreatFeedback from "../../components/modals/CreateFeedback";
 import { MdOutlineAddCircle } from "react-icons/md";
+import Cookies from 'js-cookie';
+
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [feedbackModel, setFeedbackModel] = useState();
@@ -19,7 +21,8 @@ const Feedback = () => {
   const getFeedback = async () => {
     if (sortValue == "Lastest") {
       try {
-        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback`, {
+        const token = Cookies.get('accessToken');
+        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedback?token=${token}`, {
           withCredentials: true,
         });
         console.log("feedbackData");
@@ -59,7 +62,8 @@ const Feedback = () => {
       }
     } else {
       try {
-        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedbackOld`, {
+        const token = Cookies.get('accessToken');
+        const feedbackData = await axios.get(`${ApiUrl}/api/getFeedbackOld?token=${token}`, {
           withCredentials: true,
         });
         console.log("feedbackData");

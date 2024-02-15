@@ -6,6 +6,7 @@ import { DataLayer } from "@/context/UserDataProvider.js";
 import UserPanel from "@/components/common/Leftpanel.js/UserPanel";
 import TextFields from "../../components/common/InputFields/TextFields";
 import { FaPlus } from "react-icons/fa";
+import Cookies from 'js-cookie';
 
 const Assistant = () => {
   const [chatHistory, setChatHistory] = useState([]);
@@ -18,8 +19,9 @@ const Assistant = () => {
     ]);
 
     try {
+      const token = Cookies.get('accessToken');
       const response = await axios.post(
-        `${ApiUrl}/api/fetchResponseGPT`,
+        `${ApiUrl}/api/fetchResponseGPT?token=${token}`,
         {
           text: userInput,
         },
@@ -50,7 +52,7 @@ const Assistant = () => {
       <div className="flex flex-col items-center w-full ">
         <div className="flex flex-col w-[50rem] items-center justify-end py-6 h-[100vh] border-2 border-borderBg">
           <span className="text-2xl text-white ">Police Bot</span>
-          <div className="w-full mt-8 border-2  border-borderBg" />
+          <div className="w-full mt-8 border-2 border-borderBg" />
           <div className="flex-col flex-grow w-full px-4 overflow-y-auto text-white ">
             {chatHistory &&
               chatHistory.map((item, index) => (
@@ -59,7 +61,7 @@ const Assistant = () => {
                   className="p-2 my-4 bg-second rounded-xl h-26x"
                 >
                   <div>{item.user}</div>
-                  <div className="w-full my-2 border-2  border-borderBg" />
+                  <div className="w-full my-2 border-2 border-borderBg" />
 
                   <div className="px-2">{item.message}</div>
                 </div>
@@ -75,7 +77,7 @@ const Assistant = () => {
             />
             {/* Button to send message */}
             <button
-              className="flex items-center justify-center ml-1 text-white rounded-lg  bg-btn w-14"
+              className="flex items-center justify-center ml-1 text-white rounded-lg bg-btn w-14"
               onClick={handleSendMessage}
             >
               <FaPlus className="w-6 h-6 " />
