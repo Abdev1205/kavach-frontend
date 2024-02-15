@@ -32,7 +32,7 @@ const Index = () => {
   const handleLogout = async () => {
     console.log('logout clicked')
     try {
-      const reponse = await axios.get('http://localhost:4000/api/logout', {
+      const reponse = await axios.get(`${ApiUrl}/api/logout`, {
         withCredentials: true
       });
       console.log(reponse)

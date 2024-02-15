@@ -5,6 +5,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { ApiUrl } from '@/utils/BaseUrl';
 
 
 const PanelFooter = () => {
@@ -12,7 +13,7 @@ const PanelFooter = () => {
   const handleLogout = async () => {
     console.log('logout clicked')
     try {
-      const reponse = await axios.get('http://localhost:4000/api/logout', {
+      const reponse = await axios.get(`${ApiUrl}/api/logout`, {
         withCredentials: true
       });
       console.log(reponse)
